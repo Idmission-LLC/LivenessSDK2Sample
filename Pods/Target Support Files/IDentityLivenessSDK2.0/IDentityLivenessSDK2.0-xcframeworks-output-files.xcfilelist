@@ -1,0 +1,2 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/IDentityLivenessSDK.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/SelfieCaptureLiveness.framework
