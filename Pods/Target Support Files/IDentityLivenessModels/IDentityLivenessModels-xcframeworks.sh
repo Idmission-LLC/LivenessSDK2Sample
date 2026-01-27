@@ -20,6 +20,9 @@ variant_for_slice()
   "IDentityLivenessModels.xcframework/ios-arm64")
     echo ""
     ;;
+  "IDentityLivenessModels.xcframework/ios-x86_64-simulator")
+    echo "simulator"
+    ;;
   esac
 }
 
@@ -28,6 +31,9 @@ archs_for_slice()
   case "$1" in
   "IDentityLivenessModels.xcframework/ios-arm64")
     echo "arm64"
+    ;;
+  "IDentityLivenessModels.xcframework/ios-x86_64-simulator")
+    echo "x86_64"
     ;;
   esac
 }
@@ -111,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/IDentityLivenessModels/IDentityLivenessModels.xcframework" "IDentityLivenessModels" "framework" "ios-arm64"
+install_xcframework "${PODS_ROOT}/IDentityLivenessModels/IDentityLivenessModels.xcframework" "IDentityLivenessModels" "framework" "ios-arm64" "ios-x86_64-simulator"
 

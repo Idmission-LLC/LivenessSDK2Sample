@@ -20,8 +20,14 @@ variant_for_slice()
   "IDentityLivenessSDK.xcframework/ios-arm64")
     echo ""
     ;;
+  "IDentityLivenessSDK.xcframework/ios-x86_64-simulator")
+    echo "simulator"
+    ;;
   "SelfieCaptureLiveness.xcframework/ios-arm64")
     echo ""
+    ;;
+  "SelfieCaptureLiveness.xcframework/ios-x86_64-simulator")
+    echo "simulator"
     ;;
   esac
 }
@@ -32,8 +38,14 @@ archs_for_slice()
   "IDentityLivenessSDK.xcframework/ios-arm64")
     echo "arm64"
     ;;
+  "IDentityLivenessSDK.xcframework/ios-x86_64-simulator")
+    echo "x86_64"
+    ;;
   "SelfieCaptureLiveness.xcframework/ios-arm64")
     echo "arm64"
+    ;;
+  "SelfieCaptureLiveness.xcframework/ios-x86_64-simulator")
+    echo "x86_64"
     ;;
   esac
 }
@@ -117,6 +129,6 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/IDentityLivenessSDK2.0/IDentityLivenessSDK.xcframework" "IDentityLivenessSDK2.0" "framework" "ios-arm64"
-install_xcframework "${PODS_ROOT}/IDentityLivenessSDK2.0/SelfieCaptureLiveness.xcframework" "IDentityLivenessSDK2.0" "framework" "ios-arm64"
+install_xcframework "${PODS_ROOT}/IDentityLivenessSDK2.0/IDentityLivenessSDK.xcframework" "IDentityLivenessSDK2.0" "framework" "ios-arm64" "ios-x86_64-simulator"
+install_xcframework "${PODS_ROOT}/IDentityLivenessSDK2.0/SelfieCaptureLiveness.xcframework" "IDentityLivenessSDK2.0" "framework" "ios-arm64" "ios-x86_64-simulator"
 
