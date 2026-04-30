@@ -8,8 +8,7 @@ target 'LivenessSDK2Sample' do
   # Pods for LivenessSDK2Sample
     pod 'IDentityLivenessSDK2.0'
     pod 'IDentityLivenessModels'
-     pod 'GoogleMLKit/FaceDetection'
-     pod 'GZIP'
+    pod 'GZIP'
 
 end
 

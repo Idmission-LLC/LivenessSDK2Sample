@@ -343,7 +343,6 @@ SWIFT_CLASS("_TtC19IDentityLivenessSDK28CaptureSessionViewController")
 
 
 
-
 /// :nodoc:
 SWIFT_CLASS("_TtC19IDentityLivenessSDK7IDError")
 @interface IDError : NSError
@@ -364,7 +363,6 @@ SWIFT_CLASS("_TtC19IDentityLivenessSDK15LocationManager")
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 @end
-
 
 
 

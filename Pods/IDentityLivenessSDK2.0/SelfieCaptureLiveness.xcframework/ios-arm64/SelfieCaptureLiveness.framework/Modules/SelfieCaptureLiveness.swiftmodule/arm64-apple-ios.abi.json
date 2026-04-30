@@ -8075,7 +8075,7 @@
     {
       "filePath": "\/Users\/amold\/Documents\/SDK-2.0\/idmissioniossdk\/IDentitySDK\/SelfieCapture\/SelfieCaptureViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 18099,
+      "offset": 19849,
       "length": 5,
       "value": "false"
     },
@@ -8110,30 +8110,37 @@
     {
       "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 1049,
+      "offset": 1041,
+      "length": 12,
+      "value": "\"back_arrow\""
+    },
+    {
+      "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1176,
+      "length": 9,
+      "value": "\"close-x\""
+    },
+    {
+      "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1322,
       "length": 16,
       "value": "\"overlay_selfie\""
     },
     {
       "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 1223,
+      "offset": 1496,
       "length": 27,
       "value": "\"overlay_selfie_background\""
     },
     {
       "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 1379,
+      "offset": 1652,
       "length": 12,
       "value": "\"retry_user\""
-    },
-    {
-      "filePath": "\/Users\/amold\/Library\/Developer\/Xcode\/DerivedData\/idmissioniossdk-liveness\/Build\/Intermediates.noindex\/IDentitySDK.build\/Release-iphoneos\/SelfieCaptureLiveness.build\/DerivedSources\/GeneratedAssetSymbols.swift",
-      "kind": "StringLiteral",
-      "offset": 1522,
-      "length": 13,
-      "value": "\"xmark-solid\""
     }
   ]
 }

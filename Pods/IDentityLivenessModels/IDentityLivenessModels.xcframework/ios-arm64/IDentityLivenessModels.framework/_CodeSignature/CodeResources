@@ -4,13 +4,25 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>FaceMaskTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>FaceBlendshapesDetectorTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<data>
-		+pVyT3xiSaWarHUbh4v23iQ5fPk=
+		2s1bdyS8KvnNF+sM6qr/xzzNkYk=
 		</data>
-		<key>FocusFaceTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>FaceFullRangeSparseTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<data>
-		gA034WyfYjmmVARAYnxSFRB7Xd4=
+		K9B3472DuKRu3EqPuC4E/OxoZtY=
+		</data>
+		<key>FaceLandmarksDetectorTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<data>
+		1Fwl7VSEk3LkBI8Xsx2mOzXhdAY=
+		</data>
+		<key>FaceMaskTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<data>
+		ghsUim9O/Ml+/fpZ6K6uECR/bxY=
+		</data>
+		<key>FocusFaceTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<data>
+		yDORMrYoxjLHgbLVKHIRF0EkSRI=
 		</data>
 		<key>Headers/IDentityLiteModels.h</key>
 		<data>
@@ -18,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vJ7R0L7zzIFFKEg1D56M6Km9AX4=
+		gw1BGat1XqxAOtXfuIQ/JQuG1EE=
 		</data>
 		<key>Modules/IDentityLivenessModels.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -38,27 +50,48 @@
 		</data>
 		<key>Modules/IDentityLivenessModels.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		VfpkIEJElGtl2l3Lp3VZzFoCZsU=
+		DGVkRrr/GkWHJpF5QmjSXcWJwiU=
 		</data>
-		<key>PassiveFaceTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>PassiveFaceTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<data>
-		BiXF+eydo/X11BtpTz5jlYbi7x4=
+		o4W19O+jP17zU23kTqQlo5Vtsy0=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>FaceMaskTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>FaceBlendshapesDetectorTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			euPSEV269StSOP2uR0j9LACGKrX/OUf6dOXLsxGmrks=
+			n3WdvuF58O88AiWvDd4pLu6gga3TB83gmYAfmWJn3ic=
 			</data>
 		</dict>
-		<key>FocusFaceTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>FaceFullRangeSparseTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kLdvdvW/eAQCs159uLO4T/SK3dcUHuKHwLuZJxrxSyQ=
+			YCFeY2SqoW0ytlkaOZj6iEFeg/m1AiOhNvfGCd6HO+c=
+			</data>
+		</dict>
+		<key>FaceLandmarksDetectorTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pPtWW+EgOzkD5l5G2w+G2W2LNe9CCELA4IpGR+Ww0XE=
+			</data>
+		</dict>
+		<key>FaceMaskTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HoHt4uL9C7ApSfk9KZPBwHlHk9wUgF27eJdGGRGyaU8=
+			</data>
+		</dict>
+		<key>FocusFaceTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			l97lWeGtzU7QiXneB+ahkRhGwv8GiklBgdFkAaofCeI=
 			</data>
 		</dict>
 		<key>Headers/IDentityLiteModels.h</key>
@@ -100,14 +133,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hSV6BkBc/0qz2xObGu41kJpDK1FHjGnvbN+n4/jL9SE=
+			77M8qOMt2Scu9ivlNCVpP6vj/20heMFXdyIRMKute+U=
 			</data>
 		</dict>
-		<key>PassiveFaceTrainingModel_UNIQUE_KEY_ID_8054_20260108014503.tflite</key>
+		<key>PassiveFaceTrainingModel_UNIQUE_KEY_ID_5024_20260305020917.tflite</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VV8+K6JAKix+rtg5y3Z5TRjCf38UZTCj1KHZTa7IXeY=
+			8qBPorDRX8+fuCpMqOHChP1Bbb+LP3KkMc4nknbFl4M=
 			</data>
 		</dict>
 	</dict>

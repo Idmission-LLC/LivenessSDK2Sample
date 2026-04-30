@@ -176,25 +176,13 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GZIP/GZIP.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessModels/IDentityLivenessModels.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/IDentityLivenessSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/SelfieCaptureLiveness.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GZIP/GZIP.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessModels/IDentityLivenessModels.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/IDentityLivenessSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/IDentityLivenessSDK2.0/SelfieCaptureLiveness.framework"

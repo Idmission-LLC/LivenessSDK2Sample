@@ -58,24 +58,44 @@ extension ViewController: InitializationDelegate {
         //1. Debug-Purpose : Just to print information in logs
         let stage_state_Value = "\(stage.rawValue) \(state.rawValue)"
         switch stage {
-        case .login: print("Login Status :", stage_state_Value)
-        case .searchCompanyTemplateDetails: print("Template Download Status :", stage_state_Value)
-        case .passiveFaceTrainingModelLabel: print("FaceModel Download Status :", stage_state_Value)
-        case .focusFaceTrainingModelLabel: print("FaceFocusModel Download Status :", stage_state_Value)
+        case .login:
+            print("Login Status :", stage_state_Value)
+        
+        case .passiveFaceTrainingModelLabel:
+            print("PassiveFaceModel Download Status :", stage_state_Value)
+        
+        case .focusFaceTrainingModelLabel:
+            print("FaceFocusModel Download Status :", stage_state_Value)
+        
+        case .faceFullRangeSparseTrainingModelLabel:
+            print("FaceFullRangeSparseModel Download Status :", stage_state_Value)
+        
+        case .faceLandmarksDetectorTrainingModelLabel:
+            print("FaceLandmarksDetectorModel Download Status :", stage_state_Value)
+        
+        case .faceBlendshapesDetectorTrainingModelLabel:
+            print("FaceBlendshapesModel Download Status :", stage_state_Value)
+        
+        case .faceMaskTrainingModelLabel:
+            print("FaceMaskModel Download Status :", stage_state_Value)
+        
         @unknown default: print("Unknown Status :", stage_state_Value)
         }
         
         //2. check for completion of the stage states
         states[stage] = state
         if states[.login] == .downloaded &&
-            ([.ok, .downloaded].contains(states[.searchCompanyTemplateDetails])) &&
             ([.ok, .downloadedFromS3].contains(states[.passiveFaceTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3].contains(states[.focusFaceTrainingModelLabel])) {
+            ([.ok, .downloadedFromS3].contains(states[.focusFaceTrainingModelLabel])) &&
+            ([.ok, .downloadedFromS3].contains(states[.faceFullRangeSparseTrainingModelLabel])) &&
+            ([.ok, .downloadedFromS3].contains(states[.faceLandmarksDetectorTrainingModelLabel])) &&
+            ([.ok, .downloadedFromS3].contains(states[.faceBlendshapesDetectorTrainingModelLabel])) &&
+            ([.ok, .downloadedFromS3].contains(states[.faceMaskTrainingModelLabel])) {
             
             activityIndicator.stopAnimating()
             self.performSegue(withIdentifier: "CompleteKYC_SegueID", sender: nil)
             
-        } else if states[.login] == .error || states[.searchCompanyTemplateDetails] == .error  {
+        } else if states[.login] == .error  {
             
             print("!!! initialize SDK ERROR ")
             activityIndicator.stopAnimating()

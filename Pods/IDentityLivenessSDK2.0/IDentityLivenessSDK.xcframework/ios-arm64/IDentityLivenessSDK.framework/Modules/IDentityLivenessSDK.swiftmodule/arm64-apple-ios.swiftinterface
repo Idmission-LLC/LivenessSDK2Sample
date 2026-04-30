@@ -4,16 +4,18 @@
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import AVFoundation
 import Accelerate
+import Darwin.C
 import CommonCrypto
 import CoreGraphics
 import CoreLocation
 import CoreMedia
 import CryptoKit
+import Darwin
 import Foundation
+import GZIP
 @_exported import IDentityLivenessSDK
 import ImageIO
-import MLKitFaceDetection
-import MLKitVision
+import MachO
 import MetalPerformanceShaders
 import MobileCoreServices
 import Network
@@ -89,6 +91,9 @@ public enum EventName : Swift.String, Swift.Codable {
   case publicKeysDownloadEvent
   case searchCompanyTemplateDownloadEvent
   case xsltDownloadEvent
+  case modelDownloadFaceFullRangeSparseEvent
+  case modelDownloadFaceLandmarksDetectorEvent
+  case modelDownloadFaceBlendshapesDetectorEvent
   case modelDownloadFaceLivenessEvent
   case modellDownloadFaceMaskEvent
   case modelDownloadFaceFocusEvent
@@ -142,7 +147,7 @@ public struct AnyCodable : Swift.Codable {
 public struct FormDetailValidateIdResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var videoIDData: IDentityLivenessSDK.VideoIDDataValidateIdResponse?
@@ -614,6 +619,15 @@ public struct AdditionalCustomerWFlagCommonData : Swift.Encodable {
       get
     }
   }
+  public enum AdvancedTamperDetection : Swift.String, Swift.Encodable {
+    case yes
+    case no
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
   public enum DetectLabel : Swift.String, Swift.Encodable {
     case yes
     case no
@@ -677,6 +691,7 @@ public struct AdditionalCustomerWFlagCommonData : Swift.Encodable {
   public var gpsCoordinates: Swift.String?
   public var piiExclusion: Swift.String?
   public var detectLiveness: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness?
+  public var advancedTamperDetection: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection?
   public var detectLabel: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel?
   public var detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectClosedEyes?
   public var sendSignatureFromIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFromIdInResponse?
@@ -686,8 +701,13 @@ public struct AdditionalCustomerWFlagCommonData : Swift.Encodable {
   public var sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse?
   public var metadata: IDentityLivenessSDK.Metadata?
   public var ocrMetadata: Swift.String?
-  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientTraceId: Swift.String? = nil, clientRequestID: Swift.String? = nil, manualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.ManualReviewRequired? = .no, bypassAgeValidation: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassAgeValidation? = .no, deDuplicationRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDuplicationRequired? = .no, bypassNameMatching: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassNameMatching? = .yes, postDataAPIRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataAPIRequired? = .no, postDataAPIURL: Swift.String? = nil, sendMetaDataInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendMetaDataInPost? = .yes, sendInputImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInPost? = .no, sendProcessedImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInPost? = .no, needImmediateResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.NeedImmediateResponse? = .no, deduplicationSynchronous: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeduplicationSynchronous? = .no, verifyDataWithHost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.VerifyDataWithHost? = .no, idBackImageRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdBackImageRequired? = .yes, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.StripSpecialCharacters? = .yes, idImageResolutionCheck: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdImageResolutionCheck? = .yes, deDupDataRequiredInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupDataRequiredInResponse? = .yes, deDupManualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupManualReviewRequired? = .no, postDataOnReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataOnReviewRequired? = .yes, postDataOnReviewAPIURL: Swift.String? = nil, paymentGateway: Swift.String? = nil, gpsCoordinates: Swift.String? = nil, piiExclusion: Swift.String? = nil, detectLiveness: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness? = .yes, detectLabel: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel? = .yes, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectClosedEyes? = .no, sendSignatureFromIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFromIdInResponse? = .yes, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse? = .yes, customerDataMatchConfig: IDentityLivenessSDK.CustomerDataMatchConfig? = nil, sendProcessedImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInResponse? = .yes, sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse? = .yes)
+  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientTraceId: Swift.String? = nil, clientRequestID: Swift.String? = nil, manualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.ManualReviewRequired? = .no, bypassAgeValidation: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassAgeValidation? = .no, deDuplicationRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDuplicationRequired? = .no, bypassNameMatching: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassNameMatching? = .yes, postDataAPIRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataAPIRequired? = .no, postDataAPIURL: Swift.String? = nil, sendMetaDataInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendMetaDataInPost? = nil, sendInputImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInPost? = nil, sendProcessedImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInPost? = nil, needImmediateResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.NeedImmediateResponse? = nil, deduplicationSynchronous: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeduplicationSynchronous? = nil, verifyDataWithHost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.VerifyDataWithHost? = nil, idBackImageRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdBackImageRequired? = nil, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.StripSpecialCharacters? = nil, idImageResolutionCheck: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdImageResolutionCheck? = .yes, deDupDataRequiredInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupDataRequiredInResponse? = nil, deDupManualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupManualReviewRequired? = .yes, postDataOnReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataOnReviewRequired? = .no, postDataOnReviewAPIURL: Swift.String? = nil, paymentGateway: Swift.String? = nil, gpsCoordinates: Swift.String? = nil, piiExclusion: Swift.String? = nil, detectLiveness: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness? = .yes, advancedTamperDetection: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection? = .no, detectLabel: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel? = nil, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectClosedEyes? = nil, sendSignatureFromIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFromIdInResponse? = nil, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse? = nil, customerDataMatchConfig: IDentityLivenessSDK.CustomerDataMatchConfig? = nil, sendProcessedImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInResponse? = .no, sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse? = .no)
   public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct DocumentTamper : Swift.Codable {
+  public var riskLevel: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct CompanyData : Swift.Codable {
   public var name: Swift.String?
@@ -865,6 +885,8 @@ extension IDentityLivenessSDK.SelfieCapture {
     public var capture4K: Swift.Bool
     public var uploadFaceData: Swift.Bool
     public var enableInstructionScreen: Swift.Bool
+    public var instructionScreenBackButtonIsHidden: Swift.Bool
+    public var cameraScreenBackButtonIsHidden: Swift.Bool
     public var ovalScaleMultiplier: Swift.Float {
       get
       set
@@ -896,6 +918,20 @@ public struct ProfilesResult : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
+extension UIKit.UIDevice {
+  public enum IntegritySignal : Swift.Int {
+    case healthy
+    case jailbreakCompromised
+    case debuggerCompromised
+    case hookingCompromised
+    public init?(rawValue: Swift.Int)
+    @available(iOS 2.0, *)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
 public struct PersonalCustomerEnrollBiometricsRequestData : Swift.Encodable {
   public var uniqueNumber: Swift.String
   public var name: Swift.String?
@@ -916,6 +952,15 @@ public struct PersonalCustomerEnrollBiometricsRequestData : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
 }
 extension IDentityLivenessSDK.SelfieCapture {
+  public enum CaptureLabelPosition {
+    case top
+    case center
+    public static func == (a: IDentityLivenessSDK.SelfieCapture.CaptureLabelPosition, b: IDentityLivenessSDK.SelfieCapture.CaptureLabelPosition) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
   public enum LabelPosition {
     case top
     case center
@@ -927,6 +972,7 @@ extension IDentityLivenessSDK.SelfieCapture {
     }
   }
   public struct Layout {
+    public var captureLabelPosition: IDentityLivenessSDK.SelfieCapture.CaptureLabelPosition
     public var labelPosition: IDentityLivenessSDK.SelfieCapture.LabelPosition
   }
 }
@@ -1056,7 +1102,7 @@ public struct CustomerIdentifyDataResponse : Swift.Codable {
 public struct FormDetailVerifyResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var faceMask: Swift.String?
@@ -1099,9 +1145,10 @@ public struct PersonalCustomerCommonRequestEnrollData : Swift.Encodable {
   public var addressLine2: Swift.String?
   public var city: Swift.String?
   public var district: Swift.String?
+  public var state: Swift.String?
   public var postalCode: Swift.String?
   public var country: Swift.String?
-  public init(uniqueNumber: Swift.String, name: Swift.String? = nil, firstName: Swift.String? = nil, middleName: Swift.String? = nil, lastName: Swift.String? = nil, phone: Swift.String? = nil, phoneCountryCode: Swift.String? = nil, email: Swift.String? = nil, dob: Swift.String? = nil, gender: IDentityLivenessSDK.PersonalCustomerCommonRequestEnrollData.Gender? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, city: Swift.String? = nil, district: Swift.String? = nil, postalCode: Swift.String? = nil, country: Swift.String? = nil)
+  public init(uniqueNumber: Swift.String, name: Swift.String? = nil, firstName: Swift.String? = nil, middleName: Swift.String? = nil, lastName: Swift.String? = nil, phone: Swift.String? = nil, phoneCountryCode: Swift.String? = nil, email: Swift.String? = nil, dob: Swift.String? = nil, gender: IDentityLivenessSDK.PersonalCustomerCommonRequestEnrollData.Gender? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, city: Swift.String? = nil, district: Swift.String? = nil, state: Swift.String? = nil, postalCode: Swift.String? = nil, country: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CustomerVerifyDataRequest : Swift.Encodable {
@@ -1222,7 +1269,7 @@ public struct PersonalCustomerIdentifyResponseData : Swift.Codable {
 public struct FormDetailEnrollBiometricsResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var faceMask: Swift.String?
@@ -1241,6 +1288,7 @@ public struct FormDetailEnrollBiometricsResponseData : Swift.Codable {
 }
 public struct CustomerDataResponse : Swift.Codable {
   public var extractedPersonalData: IDentityLivenessSDK.CustomerPersonalDataResponse?
+  public var hostData: IDentityLivenessSDK.HostdataResponse?
   public var extractedPOAData: [IDentityLivenessSDK.POAExtractedDataResponse]?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -1301,12 +1349,25 @@ public struct CustomerEnrollBiometricsRequest : Swift.Encodable {
 }
 public struct CustomerDataMatchResult : Swift.Codable {
   public var idNumberMatch: Swift.String?
+  public var idNumber2Match: Swift.String?
   public var dateOfBirthMatch: Swift.String?
   public var expiryDateMatch: Swift.String?
   public var nameMatch: Swift.String?
   public var firstNameMatch: Swift.String?
   public var middleNameMatch: Swift.String?
   public var lastNameMatch: Swift.String?
+  public var addressMatch: Swift.String?
+  public var postalCodeMatch: Swift.String?
+  public var idNumberMatchScore: Swift.String?
+  public var idNumber2MatchScore: Swift.String?
+  public var dateOfBirthMatchScore: Swift.String?
+  public var expiryDateMatchScore: Swift.String?
+  public var nameMatchScore: Swift.String?
+  public var firstNameMatchScore: Swift.String?
+  public var middleNameMatchScore: Swift.String?
+  public var lastNameMatchScore: Swift.String?
+  public var addressMatchScore: Swift.String?
+  public var postalCodeMatchScore: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -1404,7 +1465,10 @@ public struct HostdataResponse : Swift.Codable {
   public var criminalRecord: IDentityLivenessSDK.CriminalRecordResult?
   public var ineResponse: IDentityLivenessSDK.IneResponse?
   public var renapoResponse: IDentityLivenessSDK.RenapoResponse?
-  public var ine_QR: IDentityLivenessSDK.RenapoResponse?
+  public var ine_QR: IDentityLivenessSDK.IneQRResponse?
+  public var documentTamper: IDentityLivenessSDK.DocumentTamper?
+  public var idTamper: IDentityLivenessSDK.DocumentTamper?
+  public var advanceLivenessResult: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var pepresult: IDentityLivenessSDK.OrderPEPResult?
   public var nmresult: IDentityLivenessSDK.OrderNMResult?
   public var wlsresult: IDentityLivenessSDK.OrderWLSResult?
@@ -1544,7 +1608,7 @@ extension IDentityLivenessSDK.CaptureSession {
   public func authorizationStatus(completion: @escaping IDentityLivenessSDK.BoolCompletion)
 }
 extension UIKit.UIImage {
-  public func getExifBase64String(for capturedImageType: Swift.String, compressionQuality: CoreFoundation.CGFloat) -> Swift.String
+  public func getFinalExifImageBase64String(imageType: Swift.String, timeStamp: Swift.String, compressionQuality: CoreFoundation.CGFloat) -> Swift.String
 }
 @_hasMissingDesignatedInitializers public class XMLHashOptions {
   public var shouldProcessLazily: Swift.Bool
@@ -1732,6 +1796,7 @@ public struct CommonCustomerDataRequest : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CommonIdDataRequest : Swift.Encodable {
+  public var idBarcodeImage: Swift.String?
   public var idNumber: Swift.String?
   public var idNumber2: Swift.String?
   public var issueDate: Swift.String?
@@ -1742,14 +1807,15 @@ public struct CommonIdDataRequest : Swift.Encodable {
   public var idBackIrImage: Swift.String?
   public var idFrontUvImage: Swift.String?
   public var idBackUvImage: Swift.String?
-  public init(idNumber: Swift.String? = nil, idNumber2: Swift.String? = nil, issueDate: Swift.String? = nil, expDate: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, idFrontIrImage: Swift.String? = nil, idBackIrImage: Swift.String? = nil, idFrontUvImage: Swift.String? = nil, idBackUvImage: Swift.String? = nil)
+  public init(idBarcodeImage: Swift.String? = nil, idNumber: Swift.String? = nil, idNumber2: Swift.String? = nil, issueDate: Swift.String? = nil, expDate: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, idFrontIrImage: Swift.String? = nil, idBackIrImage: Swift.String? = nil, idFrontUvImage: Swift.String? = nil, idBackUvImage: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CommonAdditionalDocumentsRequest : Swift.Encodable {
   public var documentName: Swift.String?
   public var additionalDocument: Swift.String?
   public var processAsPOA: IDentityLivenessSDK.ProcessAsPOA?
-  public init(documentName: Swift.String? = nil, additionalDocument: Swift.String? = nil, processAsPOA: IDentityLivenessSDK.ProcessAsPOA? = .no)
+  public var analysePOA: IDentityLivenessSDK.AnalysePOA?
+  public init(documentName: Swift.String? = nil, additionalDocument: Swift.String? = nil, processAsPOA: IDentityLivenessSDK.ProcessAsPOA? = .no, analysePOA: IDentityLivenessSDK.AnalysePOA? = .no)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CustomerDataValidateIdResponse : Swift.Codable {
@@ -1958,7 +2024,7 @@ public struct CardDataRequest : Swift.Encodable {
 public struct FormDetailLiveCheckResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var faceMask: Swift.String?
@@ -1971,9 +2037,9 @@ public struct FormDetailLiveCheckResponseData : Swift.Codable {
   public var eyeCoveringScore: Swift.Double?
   public var cellPhone: Swift.String?
   public var cellPhoneScore: Swift.Double?
-  public var estimatedAge: Swift.Int?
+  public var estimatedAge: Swift.Double?
   public var predicatedGender: Swift.String?
-  public var closedEyes: Swift.String?
+  public var closedEyes: Swift.Bool?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -2025,7 +2091,7 @@ public struct Metadata : Swift.Encodable {
 public struct FormDetailIdentifyResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var faceMask: Swift.String?
@@ -2040,7 +2106,7 @@ public struct FormDetailIdentifyResponseData : Swift.Codable {
   public var cellPhoneScore: Swift.Double?
   public var estimatedAge: Swift.Int?
   public var predicatedGender: Swift.String?
-  public var closedEyes: Swift.String?
+  public var closedEyes: Swift.Bool?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -2068,26 +2134,26 @@ public enum Language : Swift.String {
 }
 public struct IdDataRequest : Swift.Encodable {
   public enum IdType : Swift.String, Swift.Encodable {
-    case passport
+    case bankCard
+    case boatShipIdCard
     case driversLicense
-    case photoId
-    case nationalId
+    case globalEntryCard
     case governmentMilitaryOrPoliceId
+    case healthIdCard
+    case nationalId
+    case other
+    case photoId
+    case passport
+    case passportAddress
+    case passportCard
     case residenceCard
+    case studentVisaPermit
+    case travelDocument
+    case taxIdCard
+    case unitedNationsRefugeeCard
     case voterIdCard
     case workVisaOrPemit
-    case unitedNationsRefugeeCard
     case notSpecified
-    case healthIdCard
-    case taxIdCard
-    case studentVisaPermit
-    case boatShipIdCard
-    case globalEntryCard
-    case passportCard
-    case travelDocument
-    case bankCard
-    case passportAddress
-    case other
     public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
@@ -2099,6 +2165,7 @@ public struct IdDataRequest : Swift.Encodable {
   public var idState: Swift.String?
   public var idImageFront: Swift.String
   public var idImageBack: Swift.String?
+  public var idBarcodeImage: Swift.String?
   public var idNumber: Swift.String?
   public var idNumber2: Swift.String?
   public var issueDate: Swift.String?
@@ -2109,7 +2176,7 @@ public struct IdDataRequest : Swift.Encodable {
   public var idBackIrImage: Swift.String?
   public var idFrontUvImage: Swift.String?
   public var idBackUvImage: Swift.String?
-  public init(idType: IDentityLivenessSDK.IdDataRequest.IdType, idCountry: Swift.String, idState: Swift.String? = nil, idImageFront: Swift.String, idImageBack: Swift.String? = nil, idNumber: Swift.String? = nil, idNumber2: Swift.String? = nil, issueDate: Swift.String? = nil, expDate: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, idFrontIrImage: Swift.String? = nil, idBackIrImage: Swift.String? = nil, idFrontUvImage: Swift.String? = nil, idBackUvImage: Swift.String? = nil)
+  public init(idType: IDentityLivenessSDK.IdDataRequest.IdType, idCountry: Swift.String, idState: Swift.String? = nil, idImageFront: Swift.String, idImageBack: Swift.String? = nil, idBarcodeImage: Swift.String? = nil, idNumber: Swift.String? = nil, idNumber2: Swift.String? = nil, issueDate: Swift.String? = nil, expDate: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, idFrontIrImage: Swift.String? = nil, idBackIrImage: Swift.String? = nil, idFrontUvImage: Swift.String? = nil, idBackUvImage: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CustomerLiveCheckDataRequest : Swift.Encodable {
@@ -2168,6 +2235,22 @@ public struct POAExtractedDataResponse : Swift.Codable {
   public var customerName: Swift.String?
   public var customerAddress: Swift.String?
   public var amount: Swift.String?
+  public var addressMatch: Swift.String?
+  public var postalCodeMatch: Swift.String?
+  public var addressWithInputMatch: Swift.String?
+  public var postalCodeWithInputMatch: Swift.String?
+  public var addressMatchScore: Swift.String?
+  public var postalCodeMatchScore: Swift.String?
+  public var addressWithInputMatchScore: Swift.String?
+  public var postalCodeWithInputMatchScore: Swift.String?
+  public var fistNameMatchScore: Swift.String?
+  public var lastNameMatchScore: Swift.String?
+  public var fistNameMatchScoreWithInputData: Swift.String?
+  public var lastNameMatchScoreWithInputData: Swift.String?
+  public var isPOA: Swift.String?
+  public var isPOAScore: Swift.String?
+  public var poaDocumentType: Swift.String?
+  public var exifData: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var metaData: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -2277,6 +2360,8 @@ public struct CardData : Swift.Codable {
 extension IDentityLivenessSDK.IDError {
   public enum Strings {
     case jailbrokenDeviceDetected
+    case hookingFrameworkDetected
+    case debuggerAttachedDetected
     case errorDownloadingSearchCompanyTemplateDetails
     case errorDownloadingGetXsltData
     case invalidURL
@@ -2316,6 +2401,7 @@ public struct IneResponse : Swift.Codable {
   public var claveMensaje: Swift.String?
   public var mensaje: Swift.String?
   public var ocr: Swift.String?
+  public var error: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -2384,6 +2470,7 @@ public struct RenapoResponse : Swift.Codable {
   public var paisNacimiento: Swift.String?
   public var sexo: Swift.String?
   public var estatusCurp: Swift.String?
+  public var error: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -2535,7 +2622,7 @@ public struct AdditionalCustomerLiveCheckData : Swift.Encodable {
   public var sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.SendDocumentIdInResponse?
   public var metadata: IDentityLivenessSDK.Metadata?
   public var ocrMetadata: Swift.String?
-  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientRequestID: Swift.String? = nil, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.StripSpecialCharacters? = .yes, estimateAge: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.EstimateAge? = .no, predictGender: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.PredictGender? = .no, gpsCoordinates: Swift.String? = nil, detectLabel: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.DetectLabel? = .no, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.DetectClosedEyes? = .yes, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.SendDocumentIdInResponse? = .yes)
+  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientRequestID: Swift.String? = nil, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.StripSpecialCharacters? = .yes, estimateAge: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.EstimateAge? = .no, predictGender: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.PredictGender? = .no, gpsCoordinates: Swift.String? = nil, detectLabel: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.DetectLabel? = .yes, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.DetectClosedEyes? = .yes, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerLiveCheckData.SendDocumentIdInResponse? = .no)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 extension CoreFoundation.CGRect {
@@ -2640,7 +2727,7 @@ public struct BiometricValidateIdFaceMatchData : Swift.Encodable {
 extension UIKit.UIImage {
   public func scaledDownToFit(width newWidth: CoreFoundation.CGFloat) -> UIKit.UIImage?
   public func scaledDownToFit(height newHeight: CoreFoundation.CGFloat) -> UIKit.UIImage?
-  public func scaledRGBData(using scaler: IDentityLivenessSDK.MetalBilinearScaler, size: CoreFoundation.CGSize, isQuantized: Swift.Bool) -> Foundation.Data?
+  public func scaledRGBData(using scaler: IDentityLivenessSDK.MetalBilinearScaler, size: CoreFoundation.CGSize, normalization: IDentityLivenessSDK.MetalBilinearScaler.NormalizationType) -> Foundation.Data?
   public func cropping(to rect: CoreFoundation.CGRect) -> UIKit.UIImage?
 }
 public struct TemplateDetailResponse : Swift.Codable {
@@ -2759,13 +2846,40 @@ extension UIKit.UIViewController {
   }
 }
 public class MetalBilinearScaler {
+  public enum NormalizationType {
+    case quantized
+    case minusOneToOne
+    case zeroToOne
+    public static func == (a: IDentityLivenessSDK.MetalBilinearScaler.NormalizationType, b: IDentityLivenessSDK.MetalBilinearScaler.NormalizationType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
   public init()
+  @objc deinit
+}
+public protocol ScreenSecurityDelegate : AnyObject {
+  func didDetectScreenshot()
+  func didChangeScreenRecordingStatus(isRecording: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers final public class ScreenSecurityManager {
+  public static let shared: IDentityLivenessSDK.ScreenSecurityManager
+  weak final public var delegate: (any IDentityLivenessSDK.ScreenSecurityDelegate)?
+  final public var isScreenRecordingEnabled: Swift.Bool
+  public static let didDetectScreenshotNotification: Foundation.Notification.Name
+  public static let didChangeRecordingStatusNotification: Foundation.Notification.Name
+  final public func startMonitoring()
+  final public func stopMonitoring()
+  final public var isScreenCaptured: Swift.Bool {
+    get
+  }
   @objc deinit
 }
 public struct FormDetailResultResponseData : Swift.Codable {
   public var uniqueRequestId: Swift.String?
   public var verificationResultId: Swift.Int?
-  public var verificationResultDetails: [Swift.String : Any]?
+  public var verificationResultDetails: [Swift.String : IDentityLivenessSDK.JSONValue]?
   public var verificationResult: Swift.String?
   public var verificationResultCode: Swift.String?
   public var faceVerificationResult: Swift.String?
@@ -2865,6 +2979,7 @@ public enum SelfieCaptureState {
 public struct Selfie {
   public let image: UIKit.UIImage
   public let faceImage: UIKit.UIImage
+  public let finalExifFaceImageBase64String: Swift.String?
   public let averageLiveness: Swift.Float
   public let faceFocusScore: Swift.Float?
   public let faceMaskScore: Swift.Float?
@@ -2931,6 +3046,7 @@ public struct IneQRResponse : Swift.Codable {
   public var qrValidation_cic: Swift.String?
   public var qrValidation_curp: Swift.String?
   public var qrValidation_ocr: Swift.String?
+  public var error: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -2942,26 +3058,26 @@ public struct CustomerLiveCheckRequest : Swift.Encodable {
 }
 public struct IdDataEnrollRequest : Swift.Encodable {
   public enum IdType : Swift.String, Swift.Encodable {
-    case passport
+    case bankCard
+    case boatShipIdCard
     case driversLicense
-    case photoId
-    case nationalId
+    case globalEntryCard
     case governmentMilitaryOrPoliceId
+    case healthIdCard
+    case nationalId
+    case other
+    case photoId
+    case passport
+    case passportAddress
+    case passportCard
     case residenceCard
+    case studentVisaPermit
+    case travelDocument
+    case taxIdCard
+    case unitedNationsRefugeeCard
     case voterIdCard
     case workVisaOrPemit
-    case unitedNationsRefugeeCard
     case notSpecified
-    case healthIdCard
-    case taxIdCard
-    case studentVisaPermit
-    case boatShipIdCard
-    case globalEntryCard
-    case passportCard
-    case travelDocument
-    case bankCard
-    case passportAddress
-    case other
     public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
@@ -3127,6 +3243,26 @@ public struct CustomerDataMatchConfig : Swift.Encodable {
       get
     }
   }
+  public enum AddressMatch : Swift.String, Swift.Encodable {
+    case yes
+    case no
+    case forced
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum AddressMatchAlgorithm : Swift.String, Swift.Encodable {
+    case nm
+    case lv
+    case jw
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
   public var idNumberMatch: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatch?
   public var idNumberMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatchAlgorith?
   public var idNumberMatchThreshold: Swift.String?
@@ -3148,7 +3284,10 @@ public struct CustomerDataMatchConfig : Swift.Encodable {
   public var lastNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatch?
   public var lastNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith?
   public var lastNameMatchThreshold: Swift.String?
-  public init(idNumberMatch: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatch? = nil, idNumberMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatchAlgorith? = nil, idNumberMatchThreshold: Swift.String? = nil, dateOfBirthMatch: IDentityLivenessSDK.CustomerDataMatchConfig.DateOfBirthMatch? = nil, dateOfBirthMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.DateOfBirthMatchAlgorith? = nil, dateOfBirthMatchThreshold: Swift.String? = nil, expiryDateMatch: IDentityLivenessSDK.CustomerDataMatchConfig.ExpiryDateMatch? = nil, expiryDateMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.ExpiryDateMatchAlgorith? = nil, expiryDateMatchThreshold: Swift.String? = nil, nameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.NameMatch? = nil, nameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.NameMatchAlgorith? = nil, nameMatchThreshold: Swift.String? = nil, firstNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.FirstNameMatch? = nil, firstNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.FirstNameMatchAlgorith? = nil, firstNameMatchThreshold: Swift.String? = nil, middleNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.MiddleNameMatch? = nil, middleNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.MiddleNameMatchAlgorith? = nil, middleNameMatchThreshold: Swift.String? = nil, lastNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatch? = nil, lastNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith? = nil, lastNameMatchThreshold: Swift.String? = nil)
+  public var addressMatch: IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatch?
+  public var addressMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatchAlgorithm?
+  public var addressMatchThreshold: Swift.String?
+  public init(idNumberMatch: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatch? = .no, idNumberMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.IdNumberMatchAlgorith? = .jw, idNumberMatchThreshold: Swift.String? = "80", dateOfBirthMatch: IDentityLivenessSDK.CustomerDataMatchConfig.DateOfBirthMatch? = .no, dateOfBirthMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.DateOfBirthMatchAlgorith? = .jw, dateOfBirthMatchThreshold: Swift.String? = "80", expiryDateMatch: IDentityLivenessSDK.CustomerDataMatchConfig.ExpiryDateMatch? = .no, expiryDateMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.ExpiryDateMatchAlgorith? = .jw, expiryDateMatchThreshold: Swift.String? = "90", nameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.NameMatch? = .no, nameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.NameMatchAlgorith? = .jw, nameMatchThreshold: Swift.String? = "70", firstNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.FirstNameMatch? = .no, firstNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.FirstNameMatchAlgorith? = .jw, firstNameMatchThreshold: Swift.String? = "70", middleNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.MiddleNameMatch? = .no, middleNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.MiddleNameMatchAlgorith? = .jw, middleNameMatchThreshold: Swift.String? = "15", lastNameMatch: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatch? = .no, lastNameMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith? = .jw, lastNameMatchThreshold: Swift.String? = "90", addressMatch: IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatch? = .no, addressMatchAlgorithm: IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatchAlgorithm? = .jw, addressMatchThreshold: Swift.String? = "70")
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct CountryMaster : Swift.Codable {
@@ -3178,14 +3317,11 @@ public enum InitializationState : Swift.String {
 }
 public enum InitializationStage : Swift.String {
   case login
-  case searchCompanyTemplateDetails
+  case faceFullRangeSparseTrainingModelLabel
+  case faceLandmarksDetectorTrainingModelLabel
+  case faceBlendshapesDetectorTrainingModelLabel
   case passiveFaceTrainingModelLabel
-  case idCaptureTrainingModelLabel
-  case classifierTrainingModelLabel
   case faceMaskTrainingModelLabel
-  case docDetectionTrainingModelLabel
-  case fingerprintDetectionTrainingModelLabel
-  case focusTrainingModelLabel
   case focusFaceTrainingModelLabel
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
@@ -3206,10 +3342,23 @@ public typealias ErrorCompletion = ((any Swift.Error)?) -> Swift.Void
     get
   }
   weak public static var delegate: (any IDentityLivenessSDK.InitializationDelegate)?
+  public static var allowedSecurityFrameworks: [Swift.String]
+  public class func setDevelopmentRelaxationSecret(_ secret: Swift.Int)
+  public class func setScreenSecurityEnabled(_ enabled: Swift.Bool)
+  public class func isScreenRecordingEnabled(_ enabled: Swift.Bool)
   public class func initializeSDK(language: IDentityLivenessSDK.Language = .en, isGPSEnabled: Swift.Bool = true, isUpdateModelsData: Swift.Bool = true, accessToken: Swift.String, completion: @escaping IDentityLivenessSDK.ErrorCompletion)
   @objc deinit
 }
 extension IDentityLivenessSDK.IDentitySDK {
+  public static var faceDetectorModelName: Swift.String {
+    get
+  }
+  public static var faceLandmarkModelName: Swift.String {
+    get
+  }
+  public static var faceBlendedShapesModelName: Swift.String {
+    get
+  }
   public static var livenessModelName: Swift.String {
     get
   }
@@ -3375,6 +3524,9 @@ extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesI
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness : Swift.Equatable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness : Swift.Hashable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness : Swift.RawRepresentable {}
+extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection : Swift.Equatable {}
+extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection : Swift.Hashable {}
+extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection : Swift.RawRepresentable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel : Swift.Equatable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel : Swift.Hashable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel : Swift.RawRepresentable {}
@@ -3387,6 +3539,11 @@ extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFro
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse : Swift.Equatable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse : Swift.Hashable {}
 extension IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse : Swift.RawRepresentable {}
+extension UIKit.UIDevice.IntegritySignal : Swift.Equatable {}
+extension UIKit.UIDevice.IntegritySignal : Swift.Hashable {}
+extension UIKit.UIDevice.IntegritySignal : Swift.RawRepresentable {}
+extension IDentityLivenessSDK.SelfieCapture.CaptureLabelPosition : Swift.Equatable {}
+extension IDentityLivenessSDK.SelfieCapture.CaptureLabelPosition : Swift.Hashable {}
 extension IDentityLivenessSDK.SelfieCapture.LabelPosition : Swift.Equatable {}
 extension IDentityLivenessSDK.SelfieCapture.LabelPosition : Swift.Hashable {}
 extension IDentityLivenessSDK.AdditionalCustomerCommonData.PostDataAPIRequired : Swift.Equatable {}
@@ -3466,6 +3623,8 @@ extension IDentityLivenessSDK.AnalysePOA : Swift.RawRepresentable {}
 extension IDentityLivenessSDK.ExtensionType : Swift.Equatable {}
 extension IDentityLivenessSDK.ExtensionType : Swift.Hashable {}
 extension IDentityLivenessSDK.ExtensionType : Swift.RawRepresentable {}
+extension IDentityLivenessSDK.MetalBilinearScaler.NormalizationType : Swift.Equatable {}
+extension IDentityLivenessSDK.MetalBilinearScaler.NormalizationType : Swift.Hashable {}
 extension IDentityLivenessSDK.IdDataEnrollRequest.IdType : Swift.Equatable {}
 extension IDentityLivenessSDK.IdDataEnrollRequest.IdType : Swift.Hashable {}
 extension IDentityLivenessSDK.IdDataEnrollRequest.IdType : Swift.RawRepresentable {}
@@ -3511,6 +3670,12 @@ extension IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatch : Swift.RawR
 extension IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith : Swift.Equatable {}
 extension IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith : Swift.Hashable {}
 extension IDentityLivenessSDK.CustomerDataMatchConfig.LastNameMatchAlgorith : Swift.RawRepresentable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatch : Swift.Equatable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatch : Swift.Hashable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatch : Swift.RawRepresentable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatchAlgorithm : Swift.Equatable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatchAlgorithm : Swift.Hashable {}
+extension IDentityLivenessSDK.CustomerDataMatchConfig.AddressMatchAlgorithm : Swift.RawRepresentable {}
 extension IDentityLivenessSDK.InitializationState : Swift.Equatable {}
 extension IDentityLivenessSDK.InitializationState : Swift.Hashable {}
 extension IDentityLivenessSDK.InitializationState : Swift.RawRepresentable {}

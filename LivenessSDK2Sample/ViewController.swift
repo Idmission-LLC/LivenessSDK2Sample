@@ -31,6 +31,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         sdkVersion_Label.text = "SDK Version : " + IDentitySDK.version
+#if DEBUG
+        IDentitySDK.setDevelopmentRelaxationSecret(0xB15D7A2E)
+#endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
