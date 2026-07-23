@@ -30,147 +30,71 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		16F6017BCA93153FC25759DCD134600C /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 967C4C83043C3BF5D70987E00A7172AB /* NSData+GZIP.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		272556F045093AE6C6D2E6CA4DDE44AF /* NSData+GZIP.h in Headers */ = {isa = PBXBuildFile; fileRef = 3748CA8F0873209476D92C6D04B6F5B3 /* NSData+GZIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FAB827787335FB6F843A78226FC6883 /* GZIP.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6F7D57B80DB3D08BC9895BBE737C9F /* GZIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63724D27E63D776C65B0B7495C2DBB0A /* GZIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 576D042D3429565C329A99C48789D7A3 /* GZIP-dummy.m */; };
-		6AB93CC54034F73FAB47D7215CD54CD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
-		C368DB1567F9F3A75D19F368636858BE /* GZIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C1C625BA92389FA3FDA3F3E41EEFE0 /* GZIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC07F0BC5608A919A5B17FD25EDB1D82 /* Pods-LivenessSDK2Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7D1FC237B5A825797EE0B7231A411C /* Pods-LivenessSDK2Sample-dummy.m */; };
-		F1020157A51C498AA6EA6E6FAAE6C7D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
-		F673B1B1CE404E8EA5CD7552DEC97E03 /* Pods-LivenessSDK2Sample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 345867073785DDF099BFBE0E9F3B589B /* Pods-LivenessSDK2Sample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1666609BCAC53D1C905EAD471AC3D125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		6B24306D7EAE0E55E26A076D3B7E1A7E /* Pods-LivenessSDK2Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7D1FC237B5A825797EE0B7231A411C /* Pods-LivenessSDK2Sample-dummy.m */; };
+		E265D11680512C0911EBFBEF0A45B3BC /* Pods-LivenessSDK2Sample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 345867073785DDF099BFBE0E9F3B589B /* Pods-LivenessSDK2Sample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		24BB93228BE0899CF850FE0DE603AC69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 24A3AF598BB8388146A479BE03A7712B;
-			remoteInfo = IDentityLivenessSDK2.0;
-		};
-		782D4C3E2779C183A7F947AF00235E65 /* PBXContainerItemProxy */ = {
+		28033AA15F6E3136985F9F4DCAF43641 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A12E5AD201491042B8AE1013F083B2DE;
 			remoteInfo = IDentityLivenessModels;
 		};
-		CC94AAEAACF9EA6B67A4DF563F5062F1 /* PBXContainerItemProxy */ = {
+		A24E90E5C55669B06EDC3B29EE0B03ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8B74CDB737C067B57BDC5065CE0E2CDC;
-			remoteInfo = GZIP;
+			remoteGlobalIDString = 24A3AF598BB8388146A479BE03A7712B;
+			remoteInfo = IDentityLivenessSDK2.0;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03B2B5E9613A8428254F160937DA95CC /* GZIP */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GZIP; path = GZIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D7597DB2E99B3ABF76934BC4E82E89 /* Pods-LivenessSDK2Sample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LivenessSDK2Sample-acknowledgements.plist"; sourceTree = "<group>"; };
 		106C97C1854BF95757C8931727414AF0 /* Pods-LivenessSDK2Sample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LivenessSDK2Sample-frameworks.sh"; sourceTree = "<group>"; };
 		14F29D3FF6125DC8B71CCFFAD3A83D44 /* Pods-LivenessSDK2Sample */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-LivenessSDK2Sample"; path = Pods_LivenessSDK2Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1594867888FC2B2F15946DB7CB5C1C1B /* IDentityLivenessSDK.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = IDentityLivenessSDK.xcframework; sourceTree = "<group>"; };
-		17C068338D59CB711C95250D2FB94210 /* IDentityLivenessSDK2.0-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "IDentityLivenessSDK2.0-xcframeworks.sh"; sourceTree = "<group>"; };
-		1F6F456734E68E653496568323B013D2 /* GZIP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GZIP.modulemap; sourceTree = "<group>"; };
-		20C1C625BA92389FA3FDA3F3E41EEFE0 /* GZIP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GZIP-umbrella.h"; sourceTree = "<group>"; };
 		345867073785DDF099BFBE0E9F3B589B /* Pods-LivenessSDK2Sample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LivenessSDK2Sample-umbrella.h"; sourceTree = "<group>"; };
-		35535D4F14B24FD0454D0287C5061A28 /* GZIP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GZIP-prefix.pch"; sourceTree = "<group>"; };
-		3748CA8F0873209476D92C6D04B6F5B3 /* NSData+GZIP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+GZIP.h"; path = "GZIP/Sources/NSData+GZIP.h"; sourceTree = "<group>"; };
 		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		39FA7A12E14B1DDFAE22BF15277B9C2A /* GZIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GZIP.debug.xcconfig; sourceTree = "<group>"; };
-		41B1C48B111B726EE091865D1FE75252 /* IDentityLivenessModels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessModels.release.xcconfig; sourceTree = "<group>"; };
-		46F83B8710A9E43F2DDE032A440D98A1 /* IDentityLivenessSDK2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessSDK2.0.release.xcconfig; sourceTree = "<group>"; };
-		486EBA394786CD495C3CCBBD7947B356 /* SelfieCaptureLiveness.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = SelfieCaptureLiveness.xcframework; sourceTree = "<group>"; };
-		576D042D3429565C329A99C48789D7A3 /* GZIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GZIP-dummy.m"; sourceTree = "<group>"; };
-		5A1536CB86658C2F09E7C6A894F0D324 /* IDentityLivenessSDK2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessSDK2.0.debug.xcconfig; sourceTree = "<group>"; };
-		5F5DDAE9FF2EB6A3CD7051F637F05F5B /* IDentityLivenessModels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessModels.debug.xcconfig; sourceTree = "<group>"; };
-		612E33CDF812D5CAC27FA0AC16CB1A7C /* IDentityLivenessModels.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = IDentityLivenessModels.xcframework; sourceTree = "<group>"; };
+		435EDD5868B091852EA3FC6D42ED51CE /* IDentityLivenessModels.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = IDentityLivenessModels.xcframework; sourceTree = "<group>"; };
+		50430B97C04D01C80C109B473601435B /* IDentityLivenessModels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessModels.release.xcconfig; sourceTree = "<group>"; };
+		5079F7B9BE2F0071F3C9313EAEB44731 /* IDentityLivenessSDK2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessSDK2.0.debug.xcconfig; sourceTree = "<group>"; };
+		6AA1C1E3BCCF0B1BBF40BD0E411391B4 /* IDentityLivenessModels-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "IDentityLivenessModels-xcframeworks.sh"; sourceTree = "<group>"; };
 		77D7D4896E0CF7BA41BBAB358E34F229 /* Pods-LivenessSDK2Sample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LivenessSDK2Sample.modulemap"; sourceTree = "<group>"; };
 		79466C8C20898B17E6031915DE1490E5 /* Pods-LivenessSDK2Sample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LivenessSDK2Sample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8224013BE40CA221920BC3EA310959C7 /* GZIP-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GZIP-Info.plist"; sourceTree = "<group>"; };
-		953C525C7CD6F5FFB7D1A2454B2BC5F2 /* IDentityLivenessModels-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "IDentityLivenessModels-xcframeworks.sh"; sourceTree = "<group>"; };
-		967C4C83043C3BF5D70987E00A7172AB /* NSData+GZIP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+GZIP.m"; path = "GZIP/Sources/NSData+GZIP.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A7628D01D21A8ADE02EF14A3D628D6D5 /* SelfieCaptureLiveness.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = SelfieCaptureLiveness.xcframework; sourceTree = "<group>"; };
+		B541ACA8709D2F50F46FC4627A063AEE /* IDentityLivenessSDK2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessSDK2.0.release.xcconfig; sourceTree = "<group>"; };
 		BC727DB4E702983DE61D961DA84F2B0D /* Pods-LivenessSDK2Sample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LivenessSDK2Sample-Info.plist"; sourceTree = "<group>"; };
+		C381B2BC19374091F78BD47FD7F61A96 /* IDentityLivenessSDK.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = IDentityLivenessSDK.xcframework; sourceTree = "<group>"; };
 		CC7D1FC237B5A825797EE0B7231A411C /* Pods-LivenessSDK2Sample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LivenessSDK2Sample-dummy.m"; sourceTree = "<group>"; };
 		DCDCB77F4810F8664E00F61B8A555333 /* Pods-LivenessSDK2Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LivenessSDK2Sample.release.xcconfig"; sourceTree = "<group>"; };
+		E57739F3508611C152E34BAEB6B2AA5C /* IDentityLivenessModels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IDentityLivenessModels.debug.xcconfig; sourceTree = "<group>"; };
 		EA07032EBDBF132700C1DCA836714E11 /* Pods-LivenessSDK2Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LivenessSDK2Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		EDD3494CA4E57E7A9CB4EAD53CE3886F /* GZIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GZIP.release.xcconfig; sourceTree = "<group>"; };
-		FA6F7D57B80DB3D08BC9895BBE737C9F /* GZIP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GZIP.h; path = GZIP/GZIP.h; sourceTree = "<group>"; };
+		F6C6595738E3336D8FC27635EC02D019 /* IDentityLivenessSDK2.0-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "IDentityLivenessSDK2.0-xcframeworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1A958606F5739B04AC4A9422E958DD72 /* Frameworks */ = {
+		F23EDD4E25515B864D5A17C169A49A6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1020157A51C498AA6EA6E6FAAE6C7D8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A120BDFF3E22B2ACA2776C8FF0B99A6C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6AB93CC54034F73FAB47D7215CD54CD5 /* Foundation.framework in Frameworks */,
+				1666609BCAC53D1C905EAD471AC3D125 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10BA73DD2DD2BA7FC0C6B0F90CD23D74 /* GZIP */ = {
+		16B19221658A3E73EEE3CBC957BE9A3F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FA6F7D57B80DB3D08BC9895BBE737C9F /* GZIP.h */,
-				3748CA8F0873209476D92C6D04B6F5B3 /* NSData+GZIP.h */,
-				967C4C83043C3BF5D70987E00A7172AB /* NSData+GZIP.m */,
-				B68C59E10D48A39D56EE8AD008096E74 /* Support Files */,
+				861224E173A2132AF2C294911B84858F /* IDentityLivenessModels */,
+				A8080AE4366309F3593C847A93B899A2 /* IDentityLivenessSDK2.0 */,
 			);
-			name = GZIP;
-			path = GZIP;
-			sourceTree = "<group>";
-		};
-		18A2C701A57277006E481BB64C34F717 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				17C068338D59CB711C95250D2FB94210 /* IDentityLivenessSDK2.0-xcframeworks.sh */,
-				5A1536CB86658C2F09E7C6A894F0D324 /* IDentityLivenessSDK2.0.debug.xcconfig */,
-				46F83B8710A9E43F2DDE032A440D98A1 /* IDentityLivenessSDK2.0.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/IDentityLivenessSDK2.0";
-			sourceTree = "<group>";
-		};
-		1A91F0D868E2F8C54B1EC88070ED1E7F /* IDentityLivenessSDK2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				F3D78E9DAFFB9FF10EBEC4BCF7E3FA88 /* Frameworks */,
-				18A2C701A57277006E481BB64C34F717 /* Support Files */,
-			);
-			name = IDentityLivenessSDK2.0;
-			path = IDentityLivenessSDK2.0;
-			sourceTree = "<group>";
-		};
-		1EBBF269DE7E6DA7FF8993011FA8E09E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				953C525C7CD6F5FFB7D1A2454B2BC5F2 /* IDentityLivenessModels-xcframeworks.sh */,
-				5F5DDAE9FF2EB6A3CD7051F637F05F5B /* IDentityLivenessModels.debug.xcconfig */,
-				41B1C48B111B726EE091865D1FE75252 /* IDentityLivenessModels.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/IDentityLivenessModels";
-			sourceTree = "<group>";
-		};
-		38AE1BD077D5A6F9F4F4F5135DD187FF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03B2B5E9613A8428254F160937DA95CC /* GZIP */,
-				14F29D3FF6125DC8B71CCFFAD3A83D44 /* Pods-LivenessSDK2Sample */,
-			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		3E3F6E2E744E4B3E7674202051A7E0B0 /* Pods-LivenessSDK2Sample */ = {
@@ -190,14 +114,42 @@
 			path = "Target Support Files/Pods-LivenessSDK2Sample";
 			sourceTree = "<group>";
 		};
-		46338744BAF78C3EFEE6A3E14F3E5345 /* Pods */ = {
+		426AD88DC7A82FB8FE543221B32C5CA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10BA73DD2DD2BA7FC0C6B0F90CD23D74 /* GZIP */,
-				BC2B6FA0C473575610FC31036F4AE643 /* IDentityLivenessModels */,
-				1A91F0D868E2F8C54B1EC88070ED1E7F /* IDentityLivenessSDK2.0 */,
+				14F29D3FF6125DC8B71CCFFAD3A83D44 /* Pods-LivenessSDK2Sample */,
 			);
-			name = Pods;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48947F46C9EF15D07FC7748242D3CF3D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6C6595738E3336D8FC27635EC02D019 /* IDentityLivenessSDK2.0-xcframeworks.sh */,
+				5079F7B9BE2F0071F3C9313EAEB44731 /* IDentityLivenessSDK2.0.debug.xcconfig */,
+				B541ACA8709D2F50F46FC4627A063AEE /* IDentityLivenessSDK2.0.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IDentityLivenessSDK2.0";
+			sourceTree = "<group>";
+		};
+		861224E173A2132AF2C294911B84858F /* IDentityLivenessModels */ = {
+			isa = PBXGroup;
+			children = (
+				DE27E996C680B233AD5ED92B81EF0C4C /* Frameworks */,
+				EE3EEC1FEDF934567594ABC60BE48AC0 /* Support Files */,
+			);
+			name = IDentityLivenessModels;
+			path = IDentityLivenessModels;
+			sourceTree = "<group>";
+		};
+		8E001E9499078E3EC8AB6BFCBAEB56E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C381B2BC19374091F78BD47FD7F61A96 /* IDentityLivenessSDK.xcframework */,
+				A7628D01D21A8ADE02EF14A3D628D6D5 /* SelfieCaptureLiveness.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		97ECF3E616CD5E273277934712BF3C64 /* Targets Support Files */ = {
@@ -208,37 +160,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B68C59E10D48A39D56EE8AD008096E74 /* Support Files */ = {
+		A8080AE4366309F3593C847A93B899A2 /* IDentityLivenessSDK2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				1F6F456734E68E653496568323B013D2 /* GZIP.modulemap */,
-				576D042D3429565C329A99C48789D7A3 /* GZIP-dummy.m */,
-				8224013BE40CA221920BC3EA310959C7 /* GZIP-Info.plist */,
-				35535D4F14B24FD0454D0287C5061A28 /* GZIP-prefix.pch */,
-				20C1C625BA92389FA3FDA3F3E41EEFE0 /* GZIP-umbrella.h */,
-				39FA7A12E14B1DDFAE22BF15277B9C2A /* GZIP.debug.xcconfig */,
-				EDD3494CA4E57E7A9CB4EAD53CE3886F /* GZIP.release.xcconfig */,
+				8E001E9499078E3EC8AB6BFCBAEB56E9 /* Frameworks */,
+				48947F46C9EF15D07FC7748242D3CF3D /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/GZIP";
-			sourceTree = "<group>";
-		};
-		BC2B6FA0C473575610FC31036F4AE643 /* IDentityLivenessModels */ = {
-			isa = PBXGroup;
-			children = (
-				BC6471B1570DA814F96CC8A15F68E639 /* Frameworks */,
-				1EBBF269DE7E6DA7FF8993011FA8E09E /* Support Files */,
-			);
-			name = IDentityLivenessModels;
-			path = IDentityLivenessModels;
-			sourceTree = "<group>";
-		};
-		BC6471B1570DA814F96CC8A15F68E639 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				612E33CDF812D5CAC27FA0AC16CB1A7C /* IDentityLivenessModels.xcframework */,
-			);
-			name = Frameworks;
+			name = IDentityLivenessSDK2.0;
+			path = IDentityLivenessSDK2.0;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -246,8 +175,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				46338744BAF78C3EFEE6A3E14F3E5345 /* Pods */,
-				38AE1BD077D5A6F9F4F4F5135DD187FF /* Products */,
+				16B19221658A3E73EEE3CBC957BE9A3F /* Pods */,
+				426AD88DC7A82FB8FE543221B32C5CA6 /* Products */,
 				97ECF3E616CD5E273277934712BF3C64 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -260,6 +189,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE27E996C680B233AD5ED92B81EF0C4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				435EDD5868B091852EA3FC6D42ED51CE /* IDentityLivenessModels.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,72 +205,45 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F3D78E9DAFFB9FF10EBEC4BCF7E3FA88 /* Frameworks */ = {
+		EE3EEC1FEDF934567594ABC60BE48AC0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1594867888FC2B2F15946DB7CB5C1C1B /* IDentityLivenessSDK.xcframework */,
-				486EBA394786CD495C3CCBBD7947B356 /* SelfieCaptureLiveness.xcframework */,
+				6AA1C1E3BCCF0B1BBF40BD0E411391B4 /* IDentityLivenessModels-xcframeworks.sh */,
+				E57739F3508611C152E34BAEB6B2AA5C /* IDentityLivenessModels.debug.xcconfig */,
+				50430B97C04D01C80C109B473601435B /* IDentityLivenessModels.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/IDentityLivenessModels";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		284812BF920AB74D100CA45862252E8A /* Headers */ = {
+		16AF5D121F3F5A4CC28F7F33C7C465E8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F673B1B1CE404E8EA5CD7552DEC97E03 /* Pods-LivenessSDK2Sample-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3CCCAFB1D6FF6DB4483AF9F6CCA9D7AA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FAB827787335FB6F843A78226FC6883 /* GZIP.h in Headers */,
-				C368DB1567F9F3A75D19F368636858BE /* GZIP-umbrella.h in Headers */,
-				272556F045093AE6C6D2E6CA4DDE44AF /* NSData+GZIP.h in Headers */,
+				E265D11680512C0911EBFBEF0A45B3BC /* Pods-LivenessSDK2Sample-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8B74CDB737C067B57BDC5065CE0E2CDC /* GZIP */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F4E5489F2E525D42C0F46A33D3B7890 /* Build configuration list for PBXNativeTarget "GZIP" */;
-			buildPhases = (
-				3CCCAFB1D6FF6DB4483AF9F6CCA9D7AA /* Headers */,
-				9AD9F3A494D491DC73F99E913D3386F2 /* Sources */,
-				A120BDFF3E22B2ACA2776C8FF0B99A6C /* Frameworks */,
-				07096F87C03444286367342C0A96BDAE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GZIP;
-			productName = GZIP;
-			productReference = 03B2B5E9613A8428254F160937DA95CC /* GZIP */;
-			productType = "com.apple.product-type.framework";
-		};
 		9FC732A3F5028BD165610A0EAAAEA901 /* Pods-LivenessSDK2Sample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 87AADD45AF923E6C5AE830ADEF985D60 /* Build configuration list for PBXNativeTarget "Pods-LivenessSDK2Sample" */;
+			buildConfigurationList = D66B025ADEB64A738580D6E00BEBBA09 /* Build configuration list for PBXNativeTarget "Pods-LivenessSDK2Sample" */;
 			buildPhases = (
-				284812BF920AB74D100CA45862252E8A /* Headers */,
-				D10D4715E1D431703FBCA0EC00EF6A2F /* Sources */,
-				1A958606F5739B04AC4A9422E958DD72 /* Frameworks */,
-				7C7C0A4F88770EE0C2BF56EB98611719 /* Resources */,
+				16AF5D121F3F5A4CC28F7F33C7C465E8 /* Headers */,
+				2275EF78E81F16613B090BF7C13EC900 /* Sources */,
+				F23EDD4E25515B864D5A17C169A49A6B /* Frameworks */,
+				2213C41FCF3055D6C5D050BCA8FB7DEC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4B3C45F40B6ED762FB3312D72443AB53 /* PBXTargetDependency */,
-				2E466591BFD3D51831778922C1B2942D /* PBXTargetDependency */,
-				689F5A61FEF4C6E6403F9C07A69C6643 /* PBXTargetDependency */,
+				DD27F20E85FAA325C1A3A357DEA0D6D6 /* PBXTargetDependency */,
+				C849B582B72F878AD354B23EFD44407D /* PBXTargetDependency */,
 			);
 			name = "Pods-LivenessSDK2Sample";
 			productName = Pods_LivenessSDK2Sample;
@@ -360,11 +270,10 @@
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 38AE1BD077D5A6F9F4F4F5135DD187FF /* Products */;
+			productRefGroup = 426AD88DC7A82FB8FE543221B32C5CA6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B74CDB737C067B57BDC5065CE0E2CDC /* GZIP */,
 				A12E5AD201491042B8AE1013F083B2DE /* IDentityLivenessModels */,
 				24A3AF598BB8388146A479BE03A7712B /* IDentityLivenessSDK2.0 */,
 				9FC732A3F5028BD165610A0EAAAEA901 /* Pods-LivenessSDK2Sample */,
@@ -373,14 +282,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		07096F87C03444286367342C0A96BDAE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C7C0A4F88770EE0C2BF56EB98611719 /* Resources */ = {
+		2213C41FCF3055D6C5D050BCA8FB7DEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,87 +329,32 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9AD9F3A494D491DC73F99E913D3386F2 /* Sources */ = {
+		2275EF78E81F16613B090BF7C13EC900 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63724D27E63D776C65B0B7495C2DBB0A /* GZIP-dummy.m in Sources */,
-				16F6017BCA93153FC25759DCD134600C /* NSData+GZIP.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D10D4715E1D431703FBCA0EC00EF6A2F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC07F0BC5608A919A5B17FD25EDB1D82 /* Pods-LivenessSDK2Sample-dummy.m in Sources */,
+				6B24306D7EAE0E55E26A076D3B7E1A7E /* Pods-LivenessSDK2Sample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E466591BFD3D51831778922C1B2942D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IDentityLivenessModels;
-			target = A12E5AD201491042B8AE1013F083B2DE /* IDentityLivenessModels */;
-			targetProxy = 782D4C3E2779C183A7F947AF00235E65 /* PBXContainerItemProxy */;
-		};
-		4B3C45F40B6ED762FB3312D72443AB53 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GZIP;
-			target = 8B74CDB737C067B57BDC5065CE0E2CDC /* GZIP */;
-			targetProxy = CC94AAEAACF9EA6B67A4DF563F5062F1 /* PBXContainerItemProxy */;
-		};
-		689F5A61FEF4C6E6403F9C07A69C6643 /* PBXTargetDependency */ = {
+		C849B582B72F878AD354B23EFD44407D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = IDentityLivenessSDK2.0;
 			target = 24A3AF598BB8388146A479BE03A7712B /* IDentityLivenessSDK2.0 */;
-			targetProxy = 24BB93228BE0899CF850FE0DE603AC69 /* PBXContainerItemProxy */;
+			targetProxy = A24E90E5C55669B06EDC3B29EE0B03ED /* PBXContainerItemProxy */;
+		};
+		DD27F20E85FAA325C1A3A357DEA0D6D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IDentityLivenessModels;
+			target = A12E5AD201491042B8AE1013F083B2DE /* IDentityLivenessModels */;
+			targetProxy = 28033AA15F6E3136985F9F4DCAF43641 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		049E34833A5AF4A7E8FD01CE8D0DC273 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDD3494CA4E57E7A9CB4EAD53CE3886F /* GZIP.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/GZIP/GZIP-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/GZIP/GZIP-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GZIP/GZIP.modulemap";
-				PRODUCT_MODULE_NAME = GZIP;
-				PRODUCT_NAME = GZIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		09909ECBA13E8F70A928465E7F7A9A92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -571,45 +418,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		20A90D64ECD7F01BADEA4A4252ABAA80 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39FA7A12E14B1DDFAE22BF15277B9C2A /* GZIP.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/GZIP/GZIP-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/GZIP/GZIP-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GZIP/GZIP.modulemap";
-				PRODUCT_MODULE_NAME = GZIP;
-				PRODUCT_NAME = GZIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -677,7 +485,7 @@
 		};
 		4471C08DE0F273E900EAD2805AEA6CAB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41B1C48B111B726EE091865D1FE75252 /* IDentityLivenessModels.release.xcconfig */;
+			baseConfigurationReference = 50430B97C04D01C80C109B473601435B /* IDentityLivenessModels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -696,7 +504,7 @@
 		};
 		5158F09B1C33F066EA6B8CAB96C030E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46F83B8710A9E43F2DDE032A440D98A1 /* IDentityLivenessSDK2.0.release.xcconfig */;
+			baseConfigurationReference = B541ACA8709D2F50F46FC4627A063AEE /* IDentityLivenessSDK2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -713,7 +521,43 @@
 			};
 			name = Release;
 		};
-		65F6B90CC0AD472AE4BE264D013F0A45 /* Release */ = {
+		78DC13485C3DF7F8CEF1DA0BF9924B96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5079F7B9BE2F0071F3C9313EAEB44731 /* IDentityLivenessSDK2.0.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		804DF4CFDFB8314D6F1A06FFA5E81FED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E57739F3508611C152E34BAEB6B2AA5C /* IDentityLivenessModels.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A129C08C939122F20667C1D2FE65C5CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCDCB77F4810F8664E00F61B8A555333 /* Pods-LivenessSDK2Sample.release.xcconfig */;
 			buildSettings = {
@@ -753,43 +597,7 @@
 			};
 			name = Release;
 		};
-		78DC13485C3DF7F8CEF1DA0BF9924B96 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A1536CB86658C2F09E7C6A894F0D324 /* IDentityLivenessSDK2.0.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		804DF4CFDFB8314D6F1A06FFA5E81FED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5DDAE9FF2EB6A3CD7051F637F05F5B /* IDentityLivenessModels.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		9BD66E2F512AC33DB06EFE4C32FE27A7 /* Debug */ = {
+		C13E6B6EC8C26E6F738F3F3253B08302 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA07032EBDBF132700C1DCA836714E11 /* Pods-LivenessSDK2Sample.debug.xcconfig */;
 			buildSettings = {
@@ -831,29 +639,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1F4E5489F2E525D42C0F46A33D3B7890 /* Build configuration list for PBXNativeTarget "GZIP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				20A90D64ECD7F01BADEA4A4252ABAA80 /* Debug */,
-				049E34833A5AF4A7E8FD01CE8D0DC273 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09909ECBA13E8F70A928465E7F7A9A92 /* Debug */,
 				2DE0D8898245310716431F92FA4989FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		87AADD45AF923E6C5AE830ADEF985D60 /* Build configuration list for PBXNativeTarget "Pods-LivenessSDK2Sample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9BD66E2F512AC33DB06EFE4C32FE27A7 /* Debug */,
-				65F6B90CC0AD472AE4BE264D013F0A45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -872,6 +662,15 @@
 			buildConfigurations = (
 				78DC13485C3DF7F8CEF1DA0BF9924B96 /* Debug */,
 				5158F09B1C33F066EA6B8CAB96C030E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D66B025ADEB64A738580D6E00BEBBA09 /* Build configuration list for PBXNativeTarget "Pods-LivenessSDK2Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C13E6B6EC8C26E6F738F3F3253B08302 /* Debug */,
+				A129C08C939122F20667C1D2FE65C5CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

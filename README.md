@@ -1140,11 +1140,13 @@ IDCapture.options.performIdCaptureBeforeSelfie = false
 IDCapture.options.passportNFCPhotoMatchThreshold = 0.97
 IDCapture.options.cameraScreenBackButtonIsHidden = false
 IDCapture.options.separateIdCardCaptureSequence = false
+IDCapture.options.isIDCapturePreviewEnabled = false
 IDCapture.options.isIdCaptureProgressBarEnabled = true
 IDCapture.options.idCaptureProgressBarLineWidth = 10.0
 IDCapture.options.wrongDocumentTypeHandlingMode = .manualCapture /.autoCapture / .exit
 IDCapture.options.allowOverrideWrongDocumentTypeAfterSec = 8
 IDCapture.options.wrongDocumentTypeWarningDelayInSec = 5
+IDCapture.options.consecutiveFakeIdCaptureLimit = 3
 
 //IDCapture Camera Screen UI Customization
 IDCapture.strings.closeButtonText = "Cancel"
@@ -1272,7 +1274,7 @@ SelfieCapture.options.maxRelativeNoseHeight = 0.67
 SelfieCapture.options.labelsConfidenceThreshold = 0.79
 SelfieCapture.options.faceMaskProbabilityThreshold = 0.98
 SelfieCapture.options.liveFaceProbabilityThreshold = 0.9
-SelfieCapture.options.consecutiveFakeFaceLimit = 10
+SelfieCapture.options.consecutiveFakeFaceLimit = 3
 SelfieCapture.options.lightIntensityThreshold = 0.05
 SelfieCapture.options.focusThreshold = 0.2
 SelfieCapture.options.isDebugMode = true
@@ -1283,6 +1285,7 @@ SelfieCapture.options.ovalScaleMultiplier = 0.7
 SelfieCapture.options.cameraPosition = .front
 SelfieCapture.options.showToggleCamera = false
 SelfieCapture.options.cameraScreenBackButtonIsHidden = false
+SelfieCapture.options.isSelfieCapturePreviewEnabled = true
 
 //SelfieCapture Camera Screen UI Customization
 SelfieCapture.strings.captureSelfie = "Capture Selfie"
@@ -1324,6 +1327,24 @@ SelfieCapture.layout.labelPosition = .center
 SelfieCapture.images.closeButtonImage = UIImage(named: "Close")
 SelfieCapture.images.silhouetteImage = UIImage(named: "SelfieOverlay")
 SelfieCapture.images.bottomInfoImage = UIImage(named: "Selfieinfo")
+
+//IDCapture Preview Screen UI Customization
+SelfieCapture.strings.previewScreenTitle = "Selfie Capture Successfull"
+SelfieCapture.strings.previewScreenRetryBtnText = "Retry"
+SelfieCapture.strings.previewScreenDoneBtnText = "Done"
+SelfieCapture.colors.previewScreenBackgroundColor = .clear
+SelfieCapture.colors.previewScreenTopViewColor = .clear
+SelfieCapture.colors.previewScreenTitleLabelColor = .clear
+SelfieCapture.colors.previewScreenTitleTextColor = .black
+SelfieCapture.colors.previewScreenRetryBtnTextColor = .white
+SelfieCapture.colors.previewScreenRetryBtnBackgroundColor = .gray
+SelfieCapture.colors.previewScreenDoneBtnTextColor = .white
+SelfieCapture.colors.previewScreenDoneBtnBackgroundColor = .gray
+SelfieCapture.fonts.previewScreenTitleLabelFont = UIFont.systemFont(ofSize: 20)
+SelfieCapture.fonts.previewScreenRetryBtnFont = UIFont.systemFont(ofSize: 20)
+SelfieCapture.fonts.previewScreenDoneBtnFont = UIFont.systemFont(ofSize: 20)
+SelfieCapture.style.previewScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+SelfieCapture.style.previewScreenDoneButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
 //SelfieCapture Instruction Screen UI Customization
 SelfieCapture.options.instructionScreenBackButtonIsHidden = false

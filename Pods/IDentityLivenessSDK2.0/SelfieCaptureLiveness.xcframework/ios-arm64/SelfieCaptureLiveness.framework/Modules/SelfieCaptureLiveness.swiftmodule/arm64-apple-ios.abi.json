@@ -5560,6 +5560,23 @@
       },
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "SelfieCaptureLiveness",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "IDentityLivenessSDK",
+        "printedName": "IDentityLivenessSDK",
+        "declKind": "Import",
+        "moduleName": "SelfieCaptureLiveness"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -8075,7 +8092,7 @@
     {
       "filePath": "\/Users\/amold\/Documents\/SDK-2.0\/idmissioniossdk\/IDentitySDK\/SelfieCapture\/SelfieCaptureViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 19849,
+      "offset": 19388,
       "length": 5,
       "value": "false"
     },

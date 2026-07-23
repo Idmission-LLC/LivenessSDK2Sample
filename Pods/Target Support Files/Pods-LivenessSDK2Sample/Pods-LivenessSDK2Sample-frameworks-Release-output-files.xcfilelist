@@ -1,4 +1,3 @@
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GZIP.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDentityLivenessModels.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDentityLivenessSDK.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SelfieCaptureLiveness.framework

@@ -1,24 +1,20 @@
 PODS:
-  - GZIP (1.3.2)
-  - IDentityLivenessModels (11.1.7.2.7)
-  - IDentityLivenessSDK2.0 (11.1.7.2.7)
+  - IDentityLivenessModels (11.1.13.2.3)
+  - IDentityLivenessSDK2.0 (11.1.13.2.3)
 
 DEPENDENCIES:
-  - GZIP
-  - IDentityLivenessModels
-  - IDentityLivenessSDK2.0
+  - IDentityLivenessModels (= 11.1.13.2.3)
+  - IDentityLivenessSDK2.0 (= 11.1.13.2.3)
 
 SPEC REPOS:
   trunk:
-    - GZIP
     - IDentityLivenessModels
     - IDentityLivenessSDK2.0
 
 SPEC CHECKSUMS:
-  GZIP: 3c0abf794bfce8c7cb34ea05a1837752416c8868
-  IDentityLivenessModels: 88d1358fb7ebe711d98fd9c4c9ef42516d9f6fdc
-  IDentityLivenessSDK2.0: de61c1a3957583b3379ad3e4be69c4228b5b7de7
+  IDentityLivenessModels: 6df06e3906ae4bf69d43ed2e7882c30374b262f6
+  IDentityLivenessSDK2.0: adb652bb61f0f1944b22ead5316144ada107d6ac
 
-PODFILE CHECKSUM: 0c9bfa6750d3d72758c57483a8ebd43a5963d6a3
+PODFILE CHECKSUM: 7baada914923bb7406db06e95236007ee94684b1
 
 COCOAPODS: 1.16.2

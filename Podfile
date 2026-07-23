@@ -6,10 +6,8 @@ target 'LivenessSDK2Sample' do
   use_frameworks!
 
   # Pods for LivenessSDK2Sample
-    pod 'IDentityLivenessSDK2.0'
-    pod 'IDentityLivenessModels'
-    pod 'GZIP'
-
+    pod 'IDentityLivenessSDK2.0', '11.1.13.2.3'
+    pod 'IDentityLivenessModels', '11.1.13.2.3'
 end
 
 post_install do |installer|
