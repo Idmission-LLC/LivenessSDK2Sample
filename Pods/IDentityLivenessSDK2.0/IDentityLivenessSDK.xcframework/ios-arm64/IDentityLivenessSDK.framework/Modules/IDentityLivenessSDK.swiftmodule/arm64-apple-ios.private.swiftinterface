@@ -106,6 +106,8 @@ public enum EventName : Swift.String, Swift.Codable {
   case modelDownloadIdFocusEvent
   case modelDownloadClassificationEvent
   case modelDownloadFingerPrintEvent
+  case modelDownloadPaddleOCRDetectionEvent
+  case modelDownloadPaddleOCRRecognitionEvent
   case selfieCaptureEvent
   case idCaptureEvent
   case idToSelfieMatchingEvent
@@ -185,8 +187,9 @@ public struct IdDataVerifyRequest : Swift.Encodable {
 public struct SignatureDataRequest : Swift.Codable {
   public var signatureImage: Swift.String?
   public var signatureVideo: Swift.String?
+  public var nfcSignature: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(signatureImage: Swift.String? = nil, signatureVideo: Swift.String? = nil)
+  public init(signatureImage: Swift.String? = nil, signatureVideo: Swift.String? = nil, nfcSignature: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -462,11 +465,12 @@ extension Swift.Dictionary {
 }
 public struct BiometricVerifyRequestData : Swift.Encodable {
   public var selfie: Swift.String
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   public var voiceData: Swift.String?
   public var videoData: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil)
+  public init(selfie: Swift.String, nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -812,10 +816,16 @@ public struct AdditionalCustomerWFlagCommonData : Swift.Encodable {
   public var customerDataMatchConfig: IDentityLivenessSDK.CustomerDataMatchConfig?
   public var sendProcessedImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInResponse?
   public var sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse?
+  public var agentCountry: Swift.String?
+  public var posTransactionDateTime: Swift.String?
+  public var subDocType: Swift.String?
+  public var transactionType: Swift.String?
+  public var channel: Swift.String?
+  public var requestSource: Swift.String?
   public var metadata: IDentityLivenessSDK.Metadata?
   public var ocrMetadata: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientTraceId: Swift.String? = nil, clientRequestID: Swift.String? = nil, manualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.ManualReviewRequired? = .no, bypassAgeValidation: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassAgeValidation? = .no, deDuplicationRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDuplicationRequired? = .no, bypassNameMatching: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassNameMatching? = .yes, postDataAPIRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataAPIRequired? = .no, postDataAPIURL: Swift.String? = nil, sendMetaDataInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendMetaDataInPost? = nil, sendInputImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInPost? = nil, sendProcessedImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInPost? = nil, needImmediateResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.NeedImmediateResponse? = nil, deduplicationSynchronous: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeduplicationSynchronous? = nil, verifyDataWithHost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.VerifyDataWithHost? = nil, idBackImageRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdBackImageRequired? = nil, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.StripSpecialCharacters? = nil, idImageResolutionCheck: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdImageResolutionCheck? = .yes, deDupDataRequiredInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupDataRequiredInResponse? = nil, deDupManualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupManualReviewRequired? = .yes, postDataOnReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataOnReviewRequired? = .no, postDataOnReviewAPIURL: Swift.String? = nil, paymentGateway: Swift.String? = nil, gpsCoordinates: Swift.String? = nil, piiExclusion: Swift.String? = nil, detectLiveness: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness? = .yes, advancedTamperDetection: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection? = .no, detectLabel: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel? = nil, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectClosedEyes? = nil, sendSignatureFromIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFromIdInResponse? = nil, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse? = nil, customerDataMatchConfig: IDentityLivenessSDK.CustomerDataMatchConfig? = nil, sendProcessedImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInResponse? = .no, sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse? = .no)
+  public init(idToken: Swift.String? = "", uniqueRequestId: Swift.String = IDentitySDK.requestID, clientTraceId: Swift.String? = nil, clientRequestID: Swift.String? = nil, manualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.ManualReviewRequired? = .no, bypassAgeValidation: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassAgeValidation? = .no, deDuplicationRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDuplicationRequired? = .no, bypassNameMatching: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.BypassNameMatching? = .yes, postDataAPIRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataAPIRequired? = .no, postDataAPIURL: Swift.String? = nil, sendMetaDataInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendMetaDataInPost? = nil, sendInputImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInPost? = nil, sendProcessedImagesInPost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInPost? = nil, needImmediateResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.NeedImmediateResponse? = nil, deduplicationSynchronous: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeduplicationSynchronous? = nil, verifyDataWithHost: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.VerifyDataWithHost? = nil, idBackImageRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdBackImageRequired? = nil, stripSpecialCharacters: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.StripSpecialCharacters? = nil, idImageResolutionCheck: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.IdImageResolutionCheck? = .yes, deDupDataRequiredInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupDataRequiredInResponse? = nil, deDupManualReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DeDupManualReviewRequired? = .yes, postDataOnReviewRequired: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.PostDataOnReviewRequired? = .no, postDataOnReviewAPIURL: Swift.String? = nil, paymentGateway: Swift.String? = nil, gpsCoordinates: Swift.String? = nil, piiExclusion: Swift.String? = nil, detectLiveness: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLiveness? = .yes, advancedTamperDetection: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.AdvancedTamperDetection? = .no, detectLabel: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectLabel? = nil, detectClosedEyes: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.DetectClosedEyes? = nil, sendSignatureFromIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendSignatureFromIdInResponse? = nil, sendDocumentIdInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendDocumentIdInResponse? = nil, customerDataMatchConfig: IDentityLivenessSDK.CustomerDataMatchConfig? = nil, sendProcessedImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendProcessedImagesInResponse? = .no, sendInputImagesInResponse: IDentityLivenessSDK.AdditionalCustomerWFlagCommonData.SendInputImagesInResponse? = .no, agentCountry: Swift.String? = nil, posTransactionDateTime: Swift.String? = nil, subDocType: Swift.String? = nil, transactionType: Swift.String? = nil, channel: Swift.String? = nil, requestSource: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -955,11 +965,16 @@ public struct PersonalCustomerAutofillResponseData : Swift.Codable {
   public var addressLine2Doc: Swift.String?
   public var dateOfBirthDoc: Swift.String?
   public var eyeColor: Swift.String?
+  public var hairColor: Swift.String?
   public var height: Swift.String?
   public var weight: Swift.String?
   public var parish: Swift.String?
   public var additionalNames: Swift.String?
   public var additionalNamesNonEng: Swift.String?
+  public var nameNonEng: Swift.String?
+  public var firstNameNonEng: Swift.String?
+  public var lastNameNonEng: Swift.String?
+  public var middleNameNonEng: Swift.String?
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -1887,6 +1902,18 @@ public struct ParsedAddress : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
+public struct ParsedPoaAddress : Swift.Codable {
+  public var streetName: Swift.String?
+  public var streetNumber: Swift.String?
+  public var unit: Swift.String?
+  public var district: Swift.String?
+  public var municipality: Swift.String?
+  public var city: Swift.String?
+  public var province: Swift.String?
+  public var postalCode: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct FingerPrint : Swift.Encodable {
   public enum Position : Swift.String, Swift.Encodable {
     case rightIndexFinger
@@ -1931,9 +1958,10 @@ public struct CustomerEnrollBiometricDataRequest : Swift.Encodable {
 }
 public struct BiometricLiveCheckData : Swift.Encodable {
   public var selfie: Swift.String
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil)
+  public init(selfie: Swift.String, nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2217,9 +2245,9 @@ public struct CustomerDataValidateIdResponse : Swift.Codable {
 public struct CustomerVerifyRequest : Swift.Encodable {
   public var customerData: IDentityLivenessSDK.CustomerVerifyDataRequest
   public var additionalData: IDentityLivenessSDK.AdditionalCustomerCommonData
-  public var employee: IDentityLivenessSDK.EmployeeData?
+  public var companyData: IDentityLivenessSDK.EmployeeData?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(customerData: IDentityLivenessSDK.CustomerVerifyDataRequest, additionalData: IDentityLivenessSDK.AdditionalCustomerCommonData, employee: IDentityLivenessSDK.EmployeeData? = nil)
+  public init(customerData: IDentityLivenessSDK.CustomerVerifyDataRequest, additionalData: IDentityLivenessSDK.AdditionalCustomerCommonData, companyData: IDentityLivenessSDK.EmployeeData? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2322,13 +2350,14 @@ public struct XsltData : Swift.Codable {
 }
 public struct BiometricEnrollData : Swift.Encodable {
   public var selfie: Swift.String
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   public var voiceData: Swift.String?
   public var videoData: Swift.String?
   public var voiceStartTime: Swift.Int?
   public var expectedAudioText: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
+  public init(selfie: Swift.String, nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2396,6 +2425,7 @@ public struct PersonalCustomerValidateIdFaceMatchResponseData : Swift.Codable {
   public var firstName: Swift.String?
   public var middleName: Swift.String?
   public var lastName: Swift.String?
+  public var nameNonEng: Swift.String?
   public var firstNameNonEng: Swift.String?
   public var lastNameNonEng: Swift.String?
   public var middleNameNonEng: Swift.String?
@@ -2613,13 +2643,14 @@ public struct CustomerLiveCheckDataRequest : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct BiometricDataValidateId : Swift.Encodable {
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   public var voiceData: Swift.String?
   public var videoData: Swift.String?
   public var voiceStartTime: Swift.Int?
   public var expectedAudioText: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
+  public init(nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2664,6 +2695,10 @@ public struct POAExtractedDataResponse : Swift.Codable {
   public var customerName: Swift.String?
   public var customerAddress: Swift.String?
   public var amount: Swift.String?
+  public var additionalCustomerName: Swift.String?
+  public var rfc: Swift.String?
+  public var rmu: Swift.String?
+  public var parsedPoaAddress: IDentityLivenessSDK.ParsedPoaAddress?
   public var addressMatch: Swift.String?
   public var postalCodeMatch: Swift.String?
   public var addressWithInputMatch: Swift.String?
@@ -2672,10 +2707,22 @@ public struct POAExtractedDataResponse : Swift.Codable {
   public var postalCodeMatchScore: Swift.String?
   public var addressWithInputMatchScore: Swift.String?
   public var postalCodeWithInputMatchScore: Swift.String?
+  public var firstNameMatch: Swift.String?
+  public var lastNameMatch: Swift.String?
   public var fistNameMatchScore: Swift.String?
   public var lastNameMatchScore: Swift.String?
+  public var firstNameMatchWithInputData: Swift.String?
   public var fistNameMatchScoreWithInputData: Swift.String?
+  public var lastNameMatchWithInputData: Swift.String?
   public var lastNameMatchScoreWithInputData: Swift.String?
+  public var middleNameMatch: Swift.String?
+  public var middleNameMatchScore: Swift.String?
+  public var nameMatch: Swift.String?
+  public var nameMatchScore: Swift.String?
+  public var middleNameMatchWithInputData: Swift.String?
+  public var middleNameMatchScoreWithInputData: Swift.String?
+  public var nameMatchWithInputData: Swift.String?
+  public var nameMatchScoreWithInputData: Swift.String?
   public var isPOA: Swift.String?
   public var isPOAScore: Swift.String?
   public var poaDocumentType: Swift.String?
@@ -2716,11 +2763,12 @@ public struct DeDuplicationResponseData : Swift.Codable {
 }
 public struct BiometricIdentifyData : Swift.Encodable {
   public var selfie: Swift.String
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   public var voiceData: Swift.String?
   public var videoData: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil)
+  public init(selfie: Swift.String, nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2735,6 +2783,7 @@ public struct GenericDataRequest : Swift.Encodable {
 }
 public struct GenericCustomerData : Swift.Encodable {
   public var selfie: Swift.String?
+  public var nfcSelfie: Swift.String?
   public var idImageFront: Swift.String?
   public var idImageBack: Swift.String?
   public var secondaryIdImageFront: Swift.String?
@@ -2749,7 +2798,7 @@ public struct GenericCustomerData : Swift.Encodable {
   public var metadata: IDentityLivenessSDK.Metadata?
   public var ocrMetadata: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String? = nil, idImageFront: Swift.String? = nil, idImageBack: Swift.String? = nil, secondaryIdImageFront: Swift.String? = nil, secondaryIdImageBack: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil, metadata: IDentityLivenessSDK.Metadata? = nil, ocrMetadata: Swift.String? = nil)
+  public init(selfie: Swift.String? = nil, nfcSelfie: Swift.String? = nil, idImageFront: Swift.String? = nil, idImageBack: Swift.String? = nil, secondaryIdImageFront: Swift.String? = nil, secondaryIdImageBack: Swift.String? = nil, videoIdImageFront: Swift.String? = nil, videoIdImageBack: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil, metadata: IDentityLivenessSDK.Metadata? = nil, ocrMetadata: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2871,6 +2920,7 @@ public struct PersonalCustomerValidateIdResponseData : Swift.Codable {
   public var firstName: Swift.String?
   public var middleName: Swift.String?
   public var lastName: Swift.String?
+  public var nameNonEng: Swift.String?
   public var firstNameNonEng: Swift.String?
   public var lastNameNonEng: Swift.String?
   public var middleNameNonEng: Swift.String?
@@ -3204,13 +3254,14 @@ extension IDentityLivenessSDK.IDentitySDK {
 }
 public struct BiometricValidateIdFaceMatchData : Swift.Encodable {
   public var selfie: Swift.String
+  public var nfcSelfie: Swift.String?
   public var fingerPrintData: IDentityLivenessSDK.FingerPrintData?
   public var voiceData: Swift.String?
   public var videoData: Swift.String?
   public var voiceStartTime: Swift.Int?
   public var expectedAudioText: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init(selfie: Swift.String, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
+  public init(selfie: Swift.String, nfcSelfie: Swift.String? = nil, fingerPrintData: IDentityLivenessSDK.FingerPrintData? = nil, voiceData: Swift.String? = nil, videoData: Swift.String? = nil, voiceStartTime: Swift.Int? = nil, expectedAudioText: Swift.String? = nil)
   #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }

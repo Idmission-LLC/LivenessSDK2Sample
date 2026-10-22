@@ -25,19 +25,19 @@ The IDmission IDentity SDK is a comprehensive toolkit that enables the use of an
 
 
 
-| Feature/Flavours |  **IdentityVideoID SDK**  |  **IdentityMedium SDK**  |  **IdentityLite SDK**  |  **IdentityLiveness SDK**  |
-|:------|:------:|:------:|:------:|:------:|
-|**01. Document Detect**           |On Device|On Device|On Device|   N/A   |
-|**02. Rotate, crop etc.**         |On Device|On Device|On Device|   N/A   |
-|**03. Document Realness**         |On Device|On Device|On Server|   N/A   |
-|**04. Document Classification**   |On Device|On Server|On Server|   N/A   |
-|**05. MRZ/Barcode reading**       |On Device|On Device|On Server|   N/A   |
-|**06. OCR from front**            |On Device|On Server|On Server|   N/A   |
-|**07. Face detect**               |On Device|On Device|On Device|On Device|
-|**08. Liveness detect**           |On Device|On Device|On Device|On Device|
-|**08. FaceMask detect**           |On Device|On Device|On Device|On Device|
-|**09. Detect hats and sunglasses**|On Device|On Device|On Server|On Server|
-|**10. Video ID**                  |On Device|   N/A   |   N/A   |   N/A   |
+| Sr. No. | Feature/Flavours |  **IdentityVideoID SDK**  |  **IdentityMedium SDK**  |  **IdentityLite SDK**  |  **IdentityLiveness SDK**  |
+|:------:|:------|:------:|:------:|:------:|:------:|
+| 1 |**Document Detect**|On Device|On Device|On Device|   N/A   |
+| 2 |**Rotate, crop etc.**|On Device|On Device|On Device|   N/A   |
+| 3 |**Document Realness**|On Device|On Device|On Server|   N/A   |
+| 4 |**Document Classification**|On Device|On Server|On Server|   N/A   |
+| 5 |**MRZ/Barcode reading**|On Device|On Device|On Server|   N/A   |
+| 6 |**OCR from front**|On Device|On Server|On Server|   N/A   |
+| 7 |**Face detect**|On Device|On Device|On Device|On Device|
+| 8 |**Liveness detect**|On Device|On Device|On Device|On Device|
+| 9 |**FaceMask detect**|On Device|On Device|On Device|On Device|
+| 10 |**Detect hats and sunglasses**|On Device|On Device|On Server|On Server|
+| 11 |**Video ID**|On Device|   N/A   |   N/A   |   N/A   |
 
 <br />
 
@@ -87,17 +87,105 @@ Note: When using the IDentity SDK, you do not need to create a request for XML; 
 
 ## Getting Started
 
-### **Step 1:** Get SDK initialization Credentials
-Please contact to sales@idmission.com for Login Credentials, which you will later pass to the SDK.
+### Requirements
 
-### **Step 2:** Create Podfile
-Add [CocoaPods](https://cocoapods.org/) pod file to your project using `pod init` command.  
+- iOS `15.6` or later
+- Xcode `26.0` or later (Swift tools version `5.9`)
+- SDK initialization credentials provided by IDmission
 
-### **Step 3:** Add IDentity 2.0 SDK to your app
-##### **Add SDK using podfile :**
+### Step 1: Get SDK initialization Credentials
+Please contact sales@idmission.com for Login Credentials, which you will later pass to the SDK.
 
-As per SDK flavour which you choose to integrate, add the following pod in your podfile which you have created in Step-2
-- **IDentityVideoId 2.0**  *pod*. 
+### Step 2: Add IDentity 2.0 SDK to your app
+
+The SDK can be added to your app in any one of the following ways. Choose the option supported by the SDK flavour you integrate:
+
+| SDK Flavour | Swift Package Manager | CocoaPods | Manual |
+|:------|:------:|:------:|:------:|
+| **IDentityVideoIdSDK** | N/A | ✅ | ✅ |
+| **IDentityMediumSDK** | ✅ | ✅ | ✅ |
+| **IDentityLiteSDK** | ✅ | ✅ | ✅ |
+| **IDentityLivenessSDK** | ✅ | ✅ | ✅ |
+
+- [Option A: Swift Package Manager (Recommended)](#option-a-swift-package-manager-recommended)
+- [Option B: CocoaPods](#option-b-cocoapods)
+- [Option C: Manual](#option-c-manual)
+
+#### Option A: Swift Package Manager (Recommended)
+
+`IDentityMediumSDK`, `IDentityLiteSDK` & `IDentityLivenessSDK` are available through [Swift Package Manager](https://swift.org/package-manager). SPM is supported from SDK version `11.1.19`. `IDentityVideoIdSDK` is not available through SPM, please use [CocoaPods](#option-b-cocoapods) or [Manual](#option-c-manual) integration.
+
+1. In Xcode, go to **File -> Add Package Dependencies...**
+2. Enter the package URL as per SDK flavour which you choose to integrate:
+
+| SDK Flavour | Package URL |
+|:------|:------|
+| **IDentityMediumSDK** | `https://github.com/Idmission-LLC/identityMediumSDK-SPM` |
+| **IDentityLiteSDK** | `https://github.com/Idmission-LLC/identityLiteSDK-SPM` |
+| **IDentityLivenessSDK** | `https://github.com/Idmission-LLC/identityLivenessSDK-SPM` |
+
+3. Set the **Dependency Rule** to **Up to Next Major Version** with version `11.1.19`.
+4. Click **Add Package**, then select the products you need from the list below.
+
+- **IDentityMedium** *SPM products*
+```swift
+IDentityMediumSDK (Required) : Includes IDentityMediumSDK, IDCaptureMedium & SelfieCaptureMedium modules.
+IDentityMediumModels (Optional) : If developer wanto to use SDK without models they can skip this product.
+IDentityMediumNFC (Optional) : If developer required Passport / ID NFC chip reading feature they can use this product.
+SignatureCaptureMediumSDK (Optional) : If developer required this feature they can use this product.
+VoiceCaptureMediumSDK (Optional) : If developer required this feature they can use this product.
+FingerPrintCaptureMediumSDK (Optional) : If developer required this feature they can use this product.
+```
+
+- **IDentityLite** *SPM products*
+```swift
+IDentityLiteSDK (Required) : Includes IDentityLiteSDK, IDCaptureLite & SelfieCaptureLite modules.
+IDentityLiteModels (Optional) : If developer wanto to use SDK without models they can skip this product.
+SignatureCaptureLiteSDK (Optional) : If developer required this feature they can use this product.
+VoiceCaptureLiteSDK (Optional) : If developer required this feature they can use this product.
+FingerPrintCaptureLiteSDK (Optional) : If developer required this feature they can use this product.
+```
+
+- **IDentityLiveness** *SPM products*
+```swift
+IDentityLivenessSDK (Required) : Includes IDentityLivenessSDK & SelfieCaptureLiveness modules.
+IDentityLivenessModels (Optional) : If developer wanto to use SDK without models they can skip this product.
+```
+
+Note: For the optional capture products, the product name and the module name differ. For example, add the `SignatureCaptureMediumSDK` product but write `import SignatureCaptureMedium` in code. The `Models` and `NFC` products do not need to be imported.
+
+If you use a `Package.swift` file instead of Xcode, add the dependency as below (example for `IDentityMediumSDK`):
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Idmission-LLC/identityMediumSDK-SPM", from: "11.1.19")
+],
+targets: [
+    .target(
+        name: "YourApp",
+        dependencies: [
+            .product(name: "IDentityMediumSDK", package: "identityMediumSDK-SPM"),
+            // Optional:
+            // .product(name: "IDentityMediumModels", package: "identityMediumSDK-SPM"),
+            // .product(name: "IDentityMediumNFC", package: "identityMediumSDK-SPM"),
+        ]
+    )
+]
+```
+
+No external dependencies are required for SPM integration. Continue with [Step 3](#step-3-configure-your-project).
+
+#### Option B: CocoaPods
+
+**1. Create Podfile**
+
+Add [CocoaPods](https://cocoapods.org/) pod file to your project using `pod init` command.
+
+**2. Add SDK pods**
+
+As per SDK flavour which you choose to integrate, add the following pods in your Podfile:
+
+- **IDentityVideoId 2.0**  *pod*
 ```swift
 pod 'IDentityVideoIdSDK2.0'
 pod 'IDentityVideoIdModels' (Optional) : If developer wanto to use SDK without models they can skip this framework.
@@ -114,6 +202,7 @@ pod 'IDentityMediumModels' (Optional) : If developer wanto to use SDK without mo
 pod 'FingerPrintCaptureMedium' (Optional) : If developer required this feature they can use this framework.
 pod 'SignatureCaptureMedium' (Optional) : If developer required this feature they can use this framework.
 pod 'VoiceCaptureMedium' (Optional) : If developer required this feature they can use this framework.
+pod 'IDentityMediumNFC' (Optional) : If developer required Passport / ID NFC chip reading feature they can use this framework.
 ```
 
 - **IDentityLite 2.0**  *pod*
@@ -131,7 +220,49 @@ pod 'IDentityLivenessSDK2.0'
 pod 'IDentityLivenessModels' (Optional) : If developer wanto to use SDK without models they can skip this framework.
 ```
 
-##### **Add SDK manually :** 
+**3. Add required dependencies (IDentityVideoIdSDK only)**
+
+Only `IDentityVideoIdSDK2.0` requires external dependencies. Add the following to your Podfile:
+
+```swift
+pod 'GoogleMLKit/TextRecognition'
+pod 'GoogleMLKit/ImageLabeling'
+```
+
+`IDentityMediumSDK2.0`, `IDentityLiteSDK2.0` & `IDentityLivenessSDK2.0` do not require any external dependencies.
+
+Note: `TensorFlowLite`, `GZIP` and `OpenSSL` are now embedded inside the SDK as static libraries, so do not add `TensorFlowLiteSwift`, `GZIP` or `OpenSSL-Universal` pods to your Podfile.
+
+**4. Reduce the size of your app bundle (Optional, IDentityVideoIdSDK only)**
+
+Optionally add the following `post_install` script (replacing `APP_TARGET` with the name of your app target) to the end of your `Podfile` to prevent [CocoaPods](https://cocoapods.org/) from statically-linking the above dependencies to your app binary, unnecessarily increasing the size of your app bundle:
+
+```swift
+post_install do |installer|
+    installer.aggregate_targets.each do |aggregate_target|
+        if aggregate_target.name == 'Pods-APP_TARGET'
+            aggregate_target.xcconfigs.each do |config_name, config_file|
+                aggregate_target.pod_targets.each do |pod_target|
+                    pod_target.specs.each do |spec|
+                        if spec.attributes_hash['vendored_frameworks'] != nil or (spec.attributes_hash['ios'] != nil and spec.attributes_hash['ios']['vendored_frameworks'] != nil)
+                            puts "Removing #{spec.name}"
+                            config_file.frameworks.delete(spec.name)
+                        end
+                    end
+                end
+                xcconfig_path = aggregate_target.xcconfig_path(config_name)
+                config_file.save_as(xcconfig_path)
+            end
+        end
+    end
+end
+```
+
+**5. Install pods**
+
+Run `pod install` to install the above mentioned pods, then open the generated `.xcworkspace` file. Continue with [Step 3](#step-3-configure-your-project).
+
+#### Option C: Manual
 
 To add IDentitySDK2.0 manually, As per your requirement choose any SDK flavour & download it from below link.
 
@@ -153,6 +284,7 @@ To add IDentitySDK2.0 manually, As per your requirement choose any SDK flavour &
     - `SignatureCaptureMedium.xcframework` (Optional) : If developer required this feature they can use this framework.
     - `FingerPrintCaptureMedium.xcframework` (Optional) : If developer required this feature they can use this framework.
     - `VoiceCaptureMedium.xcframework` (Optional) : If developer required this feature they can use this framework.
+    - `IDentityMediumNFC.xcframework` (Optional) : If developer required Passport / ID NFC chip reading feature they can use this framework.
 
 - [Download IDentityLiteSDK2.0](https://drive.google.com/file/d/1B5AyRRhzMx67rK6fR4Rz-3NbM8asz8oz/view?usp=sharing) : Drag & drop following files in your project
     - `IDentityLiteSDK.xcframework`
@@ -166,82 +298,55 @@ To add IDentitySDK2.0 manually, As per your requirement choose any SDK flavour &
 - [Download IDentityLivenessSDK2.0](https://drive.google.com/file/d/1X9ahwKrRLGYrgvkPGnjh_XBSSDJbAGik/view?usp=sharing) : Drag & drop following files in your project
     - `IDentityLivenessSDK.xcframework`
     - `SelfieCaptureLiveness.xcframework`
-    - `IDentityLivenessModels.xcframework` (Optional) : If developer wanto to use SDK without models they can skip this framework.    
+    - `IDentityLivenessModels.xcframework` (Optional) : If developer wanto to use SDK without models they can skip this framework.
 
 Once added respective `.xcframeworks` in your project, make sure to make it all as a `Embed & Sign` in **YourTarget -> General -> Frameworks, Libraries & and Embeded Content**.
 
-### **Step 4:** Add Required Dependencies
-As per SDK flavour which you choose to integrate, add the following dependencies in your podfile which you have created in Step-2
+Note: `IDentityVideoIdSDK` still requires the `GoogleMLKit/TextRecognition` & `GoogleMLKit/ImageLabeling` dependencies when added manually. Add them using CocoaPods as described in [Option B](#option-b-cocoapods) step 3. `IDentityMediumSDK`, `IDentityLiteSDK` & `IDentityLivenessSDK` do not require any external dependencies.
 
-- **IDentityVideoIdSDK2.0**  *dependencies*.  
+### Step 3: Configure your project
 
-```swift
-pod 'TensorFlowLiteSwift', '~> 2.7.0'
-pod 'GoogleMLKit/TextRecognition'
-pod 'GoogleMLKit/FaceDetection'
-pod 'GoogleMLKit/ImageLabeling'
-pod 'GZIP'
-pod 'OpenSSL-Universal', :git => 'https://github.com/krzyzanowskim/OpenSSL.git', :tag => '1.1.2301'
+#### Add Permissions
+
+Add the following keys to the app's `Info.plist` as per SDK flavour & optional frameworks which you integrate:
+
+| Info.plist key | IDentityVideoIdSDK | IDentityMediumSDK | IDentityLiteSDK | IDentityLivenessSDK |
+|:------|:------:|:------:|:------:|:------:|
+| [`NSCameraUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) | Required | Required | Required | Required |
+| [`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nslocationwheninuseusagedescription) | Required ¹ | Required ¹ | Required ¹ | Required ¹ |
+| [`NSMicrophoneUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nsmicrophoneusagedescription) | Required ² | Required ³ | Required ³ | N/A |
+| [`NSSpeechRecognitionUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nsspeechrecognitionusagedescription) | Required ⁴ | N/A | N/A | N/A |
+| [`NFCReaderUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nfcreaderusagedescription) | N/A | Required ⁵ | N/A | N/A |
+
+1. Required when SDK is initialized with `isGPSEnabled: true` (Default) or `geolocationRequired: true`.
+2. Required when `VideoCaptureVideoId` or `VoiceCaptureVideoId` framework is used.
+3. Required only when `VoiceCaptureMedium` / `VoiceCaptureLite` framework is used.
+4. Required only when `VideoCaptureVideoId` framework is used.
+5. Required only when `IDentityMediumNFC` framework is used.
+
+#### Enable NFC (IDentityMediumSDK with `IDentityMediumNFC` only)
+
+If you use the optional `IDentityMediumNFC` framework for Passport / ID NFC chip reading, also add the following:
+
+- Add the **Near Field Communication Tag Reading** capability in **YourTarget -> Signing & Capabilities**. This adds the following entitlement to the app's `.entitlements` file:
+```xml
+<key>com.apple.developer.nfc.readersession.formats</key>
+<array>
+    <string>TAG</string>
+</array>
 ```
-    
-- **IDentityMediumSDK2.0**  *dependencies*.  
-    
-```swift
-pod 'TensorFlowLiteSwift', '~> 2.7.0'
-pod 'GoogleMLKit/TextRecognition'
-pod 'GZIP'
+- Add the `com.apple.developer.nfc.readersession.iso7816.select-identifiers` key to the app's `Info.plist` with the following values:
+```xml
+<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+<array>
+    <string>A0000002471001</string>
+    <string>A0000002472001</string>
+    <string>00000000000000</string>
+</array>
 ```
+- Set `IDCapture.options.enablePassportNFC = true` before starting an ID Capture flow.
 
-- **IDentityLiteSDK2.0**  *dependencies*.  
-    
-```swift
-pod 'TensorFlowLiteSwift', '~> 2.7.0'
-pod 'GZIP'
-```
-
-- **IDentityLivenessSDK2.0**  *dependencies*.  
-    
-```swift
-pod 'TensorFlowLiteSwift', '~> 2.7.0'
-pod 'GZIP'
-```
-
-### **Step 5:** Steps to reduce size of your app bundle (Optional steps)
-Optionally add the following `post_install` script (replacing `APP_TARGET` with the name of your app target) to the end of your `Podfile` to prevent [CocoaPods](https://cocoapods.org/) from statically-linking the above dependencies to your app binary, unnecessarily increasing the size of your app bundle:  
-
-```swift
-post_install do |installer|
-    installer.aggregate_targets.each do |aggregate_target|
-        if aggregate_target.name == 'Pods-APP_TARGET'
-            aggregate_target.xcconfigs.each do |config_name, config_file|
-                aggregate_target.pod_targets.each do |pod_target|
-                    pod_target.specs.each do |spec|
-                        if spec.attributes_hash['vendored_frameworks'] != nil or (spec.attributes_hash['ios'] != nil and spec.attributes_hash['ios']['vendored_frameworks'] != nil)
-                            puts "Removing #{spec.name}"
-                            config_file.frameworks.delete(spec.name)
-                        end
-                    end
-                end
-                xcconfig_path = aggregate_target.xcconfig_path(config_name)
-                config_file.save_as(xcconfig_path)
-            end
-        end
-    end
-end
-```  
-
-### **Step 6:**  Install pod
-Run `pod install` to install above mentioned dependencies.  
-
-### **Step 7:** Add Permissions
-
-- Add an [`NSCameraUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) key to the app's `Info.plist` to allow camera access.  
-- Add an [`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nfcreaderusagedescription) key to the app's `Info.plist` to allow GPS location access.
-- Add an [`NSSpeechRecognitionUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nsspeechrecognitionusagedescription) key to the app's `Info.plist` to allow speech recognition access.
-- Add an [`NSMicrophoneUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nsmicrophoneusagedescription) key to the app's `Info.plist` to allow microphone access.
-- Add an [`NFCReaderUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nfcreaderusagedescription) key to the app's `Info.plist` to allow NFC reader access.
-
-### **Step 8:** Add API Required Reasons
+#### Add API Required Reasons
 
 Add the following dependency [API required reasons](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) to the app's `PrivacyInfo.xcprivacy` file:
 
@@ -255,23 +360,29 @@ Add the following dependency [API required reasons](https://developer.apple.com/
 
 ## SDK Initialization
 
-### **1) Generate Access Token :**
+Initialize the SDK in the following sequence:
 
-#### Tokens are to be obtained on your server and sent to the client in the initialize call.
+1. [Generate Access Token](#1-generate-access-token) (on your server)
+2. [Import Frameworks](#2-import-frameworks)
+3. [Set API Base URL](#3-set-api-base-url)
+4. [Initialize the SDK](#4-initialize-the-sdk)
+5. [Track Initialization Progress](#5-track-initialization-progress-optional) (Optional)
 
-#### Login Credentials required for token generation.
+### 1. Generate Access Token
+
+Tokens are to be obtained on your server and sent to the client in the initialize call.
 
 The following details are required to generate a token:
-```swift
-- Auth_url : Authentication url for the given environment
-- client_id : Client ID generated for the specific company
-- client_secret : Client credentials/secret generated for the specific company
-- Username : Integ user name
-- Password: Password of the Integ user
-```
-All company login details needed are provided upon sign up on the Identity Portal.
 
-#### Token Generation using RESTful API
+| Parameter | Description |
+|:------|:------|
+| `Auth_url` | Authentication url for the given environment |
+| `client_id` | Client ID generated for the specific company |
+| `client_secret` | Client credentials/secret generated for the specific company |
+| `Username` | Integ user name |
+| `Password` | Password of the Integ user |
+
+All company login details needed are provided upon sign up on the Identity Portal.
 
 Token Generation Sample Request:
 ```swift
@@ -284,7 +395,7 @@ Token Generation Sample Request:
  --data-urlencode 'password=XXXXXXXXX' \
  --data-urlencode 'scope=api_access'
  ```
- 
+
 Sample Response - Token Generation:
 ```swift
  {
@@ -297,163 +408,197 @@ Sample Response - Token Generation:
  }
  ```
 
-The following details are the response parameters
+The following details are the response parameters:
+
+| Parameter | Description |
+|:------|:------|
+| `access_token` | Access Token value |
+| `expires_in` | Access token expires time in seconds |
+| `refresh_expires_in` | Refresh access token expires time in seconds |
+| `token_type` | Token type |
+| `session_state` | Session state value |
+| `scope` | Token scope |
+
+### 2. Import Frameworks
+
+`import` the following frameworks as per SDK flavour which you integrate:
+
+- **IDentityVideoIdSDK**
 ```swift
-- access_token : Access Token value
-- expires_in : Access token expires time in seconds
-- refresh_expires_in : Refresh access token expires time in seconds
-- token_type : Token type
-- session_state : session state value
-- scope : Token scope
-```
-
-### **2) Initialize the SDK :** 
-While Initializing the SDK, first `import` below frameworks as per requirement
-
-- To integrate **IDentityVideoIdSDK** import Following frameworks.  
-
-```swift
-//For IdentityVideoIdSDK flavours import Following
 import IDentityVideoIdSDK
 import IDCaptureVideoId
 import SelfieCaptureVideoId
-import SignatureCaptureVideoId (Its optional framework as per business requirement)
-import FingerPrintCaptureVideoId (Its optional framework as per business requirement)
-import VideoCaptureVideoId (Its optional framework as per business requirement)
-import VoiceCaptureVideoId (Its optional framework as per business requirement)
+// Optional frameworks, as per business requirement:
+import SignatureCaptureVideoId
+import FingerPrintCaptureVideoId
+import VideoCaptureVideoId
+import VoiceCaptureVideoId
 ```
 
-<!-- - To integrate **IDentitySDK** import Following frameworks.  
-
+- **IDentityMediumSDK**
 ```swift
-//For IdentitySDK flavours import Following
-import IDentitySDK_Swift
-import IDCapture_Swift
-import SelfieCapture_Swift
-import SignatureCapture_Swift (Its optional framework as per business requirement)
-import FingerPrintCapture_Swift (Its optional framework as per business requirement)
-import VoiceCapture_Swift (Its optional framework as per business requirement)
-```
- -->    
-- To integrate **IDentityMediumSDK** import Following frameworks.  
-
-```swift
-//For `IdentityMediumSDK` flavours import Following Medium SDKs
 import IDentityMediumSDK
 import IDCaptureMedium
 import SelfieCaptureMedium
-import SignatureCaptureMedium (Its optional framework as per business requirement)
-import FingerPrintCaptureMedium (Its optional framework as per business requirement)
-import VoiceCaptureMedium (Its optional framework as per business requirement)
+// Optional frameworks, as per business requirement:
+import SignatureCaptureMedium
+import FingerPrintCaptureMedium
+import VoiceCaptureMedium
 ```
 
-- To integrate **IDentityLiteSDK** import Following frameworks.  
-
+- **IDentityLiteSDK**
 ```swift
-//For `IdentityLiteSDK` flavours import Following Medium SDKs
 import IDentityLiteSDK
 import IDCaptureLite
 import SelfieCaptureLite
-import SignatureCaptureLite (Its optional framework as per business requirement)
-import FingerPrintCaptureLite (Its optional framework as per business requirement)
-import VoiceCaptureLite (Its optional framework as per business requirement)
+// Optional frameworks, as per business requirement:
+import SignatureCaptureLite
+import FingerPrintCaptureLite
+import VoiceCaptureLite
 ```
 
-- To integrate **IDentityLivenessSDK** import Following frameworks.  
-
+- **IDentityLivenessSDK**
 ```swift
-//For `IDentityLivenessSDK` flavours import Following Medium SDKs
 import IDentityLivenessSDK
 import SelfieCaptureLiveness
 ```
 
-    
-As per requirement once you done with importing above frameworks, You need to Call the following SDK Initialization API.
+Note: The `Models` & `NFC` frameworks do not need to be imported. Once added to the app, the SDK detects them automatically at runtime.
 
-#### Token obtained from server needs to be passed in initialize call as below
+### 3. Set API Base URL
+
+Before initializing the SDK, set the API base URL of your environment. Default is `https://api.idmission.com/`.
 
 ```swift
-
-//Parameter for SDK initialization API.
-let language = Language.en    //Optional: Default is `.en`
-let isGPSEnabled = true       //Optional: Default is `true`
-let isUpdateModelsData = true //Optional: Default is `true`
-let accessToken = "****"      //Required: Use same AccessToken generated in Previous steps.
-
-//Before Initialization of SDK pass the url values to following `IDentitySDK` static properties.
 IDentitySDK.apiBaseUrl = "https://api.idmission.com/"
+```
 
-//Start SDK Initialization using following method.
-IDentitySDK.initializeSDK(language: language,
-                          isGPSEnabled: isGPSEnabled,
-                          isUpdateModelsData: isUpdateModelsData,
+### 4. Initialize the SDK
+
+Pass the access token obtained from your server in the initialize call as below:
+
+```swift
+IDentitySDK.initializeSDK(language: .en,
+                          isGPSEnabled: true,
+                          geolocationRequired: false,
+                          isUpdateModelsData: true,
                           accessToken: accessToken) { error in
-   if let error = error {
-      // Handle Error
-   } else {
-      // Success!
-   }
+    if let error = error {
+        // Handle Error
+        print(error.localizedDescription)
+    } else {
+        // Success! SDK is initialized
+    }
 }
 ```
 
+| Parameter | Type | Required | Default | Description |
+|:------|:------|:------:|:------|:------|
+| `language` | `Language` | No | `.en` | User interface language (`.en` / `.es`). |
+| `isGPSEnabled` | `Bool` | No | `true` | Whether or not to capture the device GPS location. |
+| `geolocationRequired` | `Bool` | No | `false` | If `true`, location permission is mandatory to use the SDK. |
+| `isUpdateModelsData` | `Bool` | No | `true` | Whether or not to download the latest SDK models after credential verification. |
+| `accessToken` | `String` | Yes | - | Access token generated in [Step 1](#1-generate-access-token). |
+| `completion` | `(Error?) -> Void` | Yes | - | If `Error?` is `nil`, the SDK was initialized successfully. |
+
 Once the SDK has been initialized, the application can start capturing data using the various following static `IDentitySDK` methods.
 
-#### To track the model download activity or status developer can use the below method.
+### 5. Track Initialization Progress (Optional)
+
+To track the login, template & model download status, set `IDentitySDK.delegate` before calling `initializeSDK` and implement the `InitializationDelegate` protocol. `updateInitialization(stage:state:)` is called every time a stage changes its state.
+
+Each SDK flavour reports only the stages it uses:
+
+| Stage | IDentityVideoIdSDK | IDentityMediumSDK | IDentityLiteSDK | IDentityLivenessSDK |
+|:------|:------:|:------:|:------:|:------:|
+| `.login` | ✅ | ✅ | ✅ | ✅ |
+| `.getXsltData` | ✅ | ✅ | ✅ | N/A |
+| `.searchCompanyTemplateDetails` | ✅ | ✅ | ✅ | N/A |
+| `.faceFullRangeSparseTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.faceLandmarksDetectorTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.faceBlendshapesDetectorTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.passiveFaceTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.faceMaskTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.focusFaceTrainingModelLabel` | ✅ | ✅ | ✅ | ✅ |
+| `.idCaptureTrainingModelLabel` (Document Realness) | ✅ | ✅ | N/A | N/A |
+| `.classifierTrainingModelLabel` (Document Classification) | ✅ | N/A | N/A | N/A |
+| `.docDetectionTrainingModelLabel` | ✅ | ✅ | ✅ | N/A |
+| `.focusTrainingModelLabel` | ✅ | ✅ | ✅ | N/A |
+| `.fingerprintDetectionTrainingModelLabel` ¹ | ✅ | ✅ | ✅ | N/A |
+| `.paddleOCRDetectionTrainingModelLabel` | N/A | ✅ | N/A | N/A |
+| `.paddleOCRRecognitionTrainingModelLabel` | N/A | ✅ | N/A | N/A |
+
+1. When the FingerPrintCapture framework is not added, this stage is reported as `.ok` immediately.
+
+Select the stages of your SDK flavour:
 
 ```swift
-//Parameter for SDK initialization API.
+// IDentityVideoIdSDK
+let templateStages: [InitializationStage] = [.getXsltData, .searchCompanyTemplateDetails]
+let modelStages: [InitializationStage] = [.faceFullRangeSparseTrainingModelLabel, .faceLandmarksDetectorTrainingModelLabel,
+                                          .faceBlendshapesDetectorTrainingModelLabel, .passiveFaceTrainingModelLabel,
+                                          .faceMaskTrainingModelLabel, .focusFaceTrainingModelLabel,
+                                          .idCaptureTrainingModelLabel, .classifierTrainingModelLabel,
+                                          .docDetectionTrainingModelLabel, .focusTrainingModelLabel,
+                                          .fingerprintDetectionTrainingModelLabel]
+
+// IDentityMediumSDK
+let templateStages: [InitializationStage] = [.getXsltData, .searchCompanyTemplateDetails]
+let modelStages: [InitializationStage] = [.faceFullRangeSparseTrainingModelLabel, .faceLandmarksDetectorTrainingModelLabel,
+                                          .faceBlendshapesDetectorTrainingModelLabel, .passiveFaceTrainingModelLabel,
+                                          .faceMaskTrainingModelLabel, .focusFaceTrainingModelLabel,
+                                          .idCaptureTrainingModelLabel, .docDetectionTrainingModelLabel,
+                                          .focusTrainingModelLabel, .fingerprintDetectionTrainingModelLabel,
+                                          .paddleOCRDetectionTrainingModelLabel, .paddleOCRRecognitionTrainingModelLabel]
+
+// IDentityLiteSDK
+let templateStages: [InitializationStage] = [.getXsltData, .searchCompanyTemplateDetails]
+let modelStages: [InitializationStage] = [.faceFullRangeSparseTrainingModelLabel, .faceLandmarksDetectorTrainingModelLabel,
+                                          .faceBlendshapesDetectorTrainingModelLabel, .passiveFaceTrainingModelLabel,
+                                          .faceMaskTrainingModelLabel, .focusFaceTrainingModelLabel,
+                                          .docDetectionTrainingModelLabel, .focusTrainingModelLabel,
+                                          .fingerprintDetectionTrainingModelLabel]
+
+// IDentityLivenessSDK
+let templateStages: [InitializationStage] = []
+let modelStages: [InitializationStage] = [.faceFullRangeSparseTrainingModelLabel, .faceLandmarksDetectorTrainingModelLabel,
+                                          .faceBlendshapesDetectorTrainingModelLabel, .passiveFaceTrainingModelLabel,
+                                          .faceMaskTrainingModelLabel, .focusFaceTrainingModelLabel]
+```
+
+Then check for completion of the stage states:
+
+```swift
+class ViewController: UIViewController {
+    private var states = [InitializationStage: InitializationState]()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        IDentitySDK.delegate = self // Set before calling `initializeSDK`
+    }
+}
+
 extension ViewController: InitializationDelegate {
     func updateInitialization(stage: InitializationStage, state: InitializationState) {
-        let status = "\(stage.rawValue) \(state.rawValue)"
-        switch stage {
-            case .login: print("Login Status :", status)
-            case .getXsltData: print("XSLT Download Status :", status)
-            case .searchCompanyTemplateDetails: print("Template Download Status :", status)
-            case .faceFullRangeSparseTrainingModelLabel: print("FaceFullRangeSparse Download Status :", status)
-            case .faceLandmarksDetectorTrainingModelLabel: print("FaceLandmarksDetector Download Status :", status)
-            case .faceBlendshapesDetectorTrainingModelLabel: print("FaceBlendshapesDetector Download Status :", status)
-            case .passiveFaceTrainingModelLabel: print("FaceModel Download Status :", status)
-            case .faceMaskTrainingModelLabel: print("FaceMaskModel Download Status :", status)
-            case .focusFaceTrainingModelLabel: print("FaceFocusModel Download Status :", status)
-            case .idCaptureTrainingModelLabel: print("IDCaptureModel Download Status :", status)
-            case .docDetectionTrainingModelLabel: print("DocDetectModel Download Status :", status)
-            case .focusTrainingModelLabel: print("IDFocusModel Download Status :", status)
-            case .classifierTrainingModelLabel: print("ClassificationModel Download Status :", status)
-            case .fingerprintDetectionTrainingModelLabel: print("FingerPrintModel Download Status :", status)
-            @unknown default: print("Unknown Status :", status)
-        }
-
-        // check for completion of the stage states
+        print("\(stage.rawValue) Status :", state.rawValue)
         states[stage] = state
-        if states[.login] == .downloaded &&
-            ([.ok, .downloaded].contains(states[.getXsltData])) &&
-            ([.ok, .downloaded].contains(states[.searchCompanyTemplateDetails])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.faceFullRangeSparseTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.faceLandmarksDetectorTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.faceBlendshapesDetectorTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.passiveFaceTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.faceMaskTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.focusFaceTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.idCaptureTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.docDetectionTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.focusTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.classifierTrainingModelLabel])) &&
-            ([.ok, .downloadedFromS3, .error].contains(states[.fingerprintDetectionTrainingModelLabel])) {
-            
+
+        let isLoginDone = states[.login] == .downloaded
+        let areTemplatesDone = templateStages.allSatisfy { [.ok, .downloaded].contains(states[$0]) }
+        let areModelsDone = modelStages.allSatisfy { [.ok, .downloadedFromS3, .error].contains(states[$0]) }
+
+        if isLoginDone && areTemplatesDone && areModelsDone {
+            // Initialization completed, start capturing
             activityIndicator.stopAnimating()
             continueButton.isHidden = false
-            
-        } else if states[.login] == .error ||
-                    states[.getXsltData] == .error ||
-                    states[.searchCompanyTemplateDetails] == .error  {
-                    
+        } else if states[.login] == .error || templateStages.contains(where: { states[$0] == .error }) {
+            // Initialization failed
             activityIndicator.stopAnimating()
             goBackButton.isHidden = false
         }
     }
 }
 ```
-Here 'updateInitialization' is a delegate method & can be used to track the model download status. 
 
 <br />
 
@@ -596,7 +741,9 @@ IDentitySDK.idValidation(from: self, customerDataOptions: commonCustomerData, op
 }
 ```
   
-The `CommonCustomerDataRequest` & `AdditionalCustomerWFlagCommonData` documentation contains information on the various capture options that can be set.  
+The `CommonCustomerDataRequest` & `AdditionalCustomerWFlagCommonData` documentation contains information on the various capture options that can be set.
+
+All above `idValidation` methods also accept an optional `isSecondaryID` parameter (Default is `false`). Pass `isSecondaryID: true` just before the `completion` closure to capture a secondary ID.  
 
 <br />
 
@@ -695,7 +842,9 @@ IDentitySDK.idValidationAndMatchFace(from: self, customerDataOptions: commonCust
 }
 ```
 
-The `CommonCustomerDataRequest` & `AdditionalCustomerWFlagCommonData` documentation contains information on the various capture options that can be set.  
+The `CommonCustomerDataRequest` & `AdditionalCustomerWFlagCommonData` documentation contains information on the various capture options that can be set.
+
+All above `idValidationAndMatchFace` methods also accept an optional `isSecondaryID` parameter (Default is `false`). Pass `isSecondaryID: true` just before the `completion` closure to capture a secondary ID.  
 
 <br />
 
@@ -1131,11 +1280,21 @@ IDCapture.options.lowerWidthThresholdTolerance = 0.3
 IDCapture.options.upperWidthThresholdTolerance = 0.05
 IDCapture.options.isDebugMode = true
 IDCapture.options.enableInstructionScreen = true
+IDCapture.options.isIdInstructionAnimationEnabled = true
+IDCapture.options.idCaptureInstructionAnimationImages = [UIImage(named: "IdInstruction1")!, UIImage(named: "IdInstruction2")!]
+IDCapture.options.idInstructionAnimationDuration = 1
 IDCapture.options.enableRealId = true
 IDCapture.options.uploadIdData = true
 IDCapture.options.capture4K = true
 IDCapture.options.focusThreshold = 0.2
+IDCapture.options.barcodeCropPadding = 0.1
+IDCapture.options.isBarcodeRecoveryEnabled = true
+IDCapture.options.missingBarcodeTimeInterval = 5
+IDCapture.options.barcodeRecoveryMoveCloserTimeInterval = 10
+IDCapture.options.barcodeRecoveryCaptureTimeInterval = 5
 IDCapture.options.enablePassportNFC = false
+IDCapture.options.showPassportNFCReadProgress = true
+IDCapture.options.passportNFCReadChunkSize = 0xFF
 IDCapture.options.performIdCaptureBeforeSelfie = false
 IDCapture.options.passportNFCPhotoMatchThreshold = 0.97
 IDCapture.options.cameraScreenBackButtonIsHidden = false
@@ -1147,6 +1306,8 @@ IDCapture.options.wrongDocumentTypeHandlingMode = .manualCapture /.autoCapture /
 IDCapture.options.allowOverrideWrongDocumentTypeAfterSec = 8
 IDCapture.options.wrongDocumentTypeWarningDelayInSec = 5
 IDCapture.options.consecutiveFakeIdCaptureLimit = 3
+IDCapture.options.idCaptureOrientationMode = .horizontal / .vertical / .dynamic
+IDCapture.options.enableDynamicBothSideCapture = false
 
 //IDCapture Camera Screen UI Customization
 IDCapture.strings.closeButtonText = "Cancel"
@@ -1160,6 +1321,9 @@ IDCapture.strings.alignRectangle = "Align ID inside Rectangle"
 IDCapture.strings.flipToBack = "Flip To Back side"
 IDCapture.strings.backImageDetected = "ID Back image detected, please flip your ID."
 IDCapture.strings.frontImageDetected = "ID Front image detected, please flip your ID."
+IDCapture.strings.idCardBackDetectedHoldStill = "ID card back detected. Hold still..."
+IDCapture.strings.idCaptureWarningMessage = "We are having trouble identifying the correct side of your ID"
+IDCapture.strings.faceDoesNotMatch = "Face does not match"
 IDCapture.strings.tooMuchGlare = "Too Much Glare"
 IDCapture.strings.useFront = "Scan the front of ID"
 IDCapture.strings.scanBarcode = "Scan the barcode"
@@ -1169,9 +1333,10 @@ IDCapture.strings.notInFocus = "Not in focus"
 IDCapture.strings.documentDetectedHoldStill = "Document detected, hold still..."
 IDCapture.strings.glareDetected = "Move Away From Direct Light"
 IDCapture.strings.removeFinger = "Remove Finger"
-IDCapture.string.captureAnywayButtonText = "Capture Anyway"
-IDCapture.string.exitButtonText = "Exit"
+IDCapture.strings.captureAnywayButtonText = "Capture Anyway"
+IDCapture.strings.exitButtonText = "Exit"
 IDCapture.colors.backgroundColor = .clear
+IDCapture.colors.overlayTopViewColor = .white
 IDCapture.colors.closeButtonColor = .white
 IDCapture.colors.closeButtonTextColor = .black
 IDCapture.colors.closeButtonImageTintColor = .white
@@ -1183,6 +1348,8 @@ IDCapture.colors.errorLabelBackgroundColor = .red
 IDCapture.colors.errorLabelTextColor = .white
 IDCapture.colors.warningLabelBackgroundColor = .yellow
 IDCapture.colors.warningLabelTextColor = .black
+IDCapture.colors.infoLabelBackgroundColor = .black
+IDCapture.colors.infoLabelTextColor = .white
 IDCapture.colors.captureAnywayButtonColor = .blue
 IDCapture.colors.captureAnywayButtonTextColor = .white
 IDCapture.colors.exitButtonColor = .blue
@@ -1205,10 +1372,10 @@ IDCapture.style.captureAnywayButton = .style(borderWidth: 2, borderColor: .red, 
 IDCapture.style.exitButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
 //IDCapture Preview Screen UI Customization
-IDCapture.string.previewScreenTitleIdFront = "ID Capture Successful"
-IDCapture.string.previewScreenTitleIdBack = "ID Capture Successful"
-IDCapture.string.previewScreenRetryBtnText = "Retry"
-IDCapture.string.previewScreenDoneBtnText = "Done"
+IDCapture.strings.previewScreenTitleIdFront = "ID Capture Successful"
+IDCapture.strings.previewScreenTitleIdBack = "ID Capture Successful"
+IDCapture.strings.previewScreenRetryBtnText = "Retry"
+IDCapture.strings.previewScreenDoneBtnText = "Done"
 IDCapture.colors.previewScreenBackgroundColor = .white
 IDCapture.colors.previewScreenTopViewColor = .white
 IDCapture.colors.previewScreenTitleLabelColor = .white
@@ -1259,6 +1426,27 @@ IDCapture.images.retryScreenImage = UIImage(named: "IdRetryImage")
 IDCapture.style.retryScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 IDCapture.style.retryScreenCancelButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
+//IDCapture NFC Screen UI Customization
+IDCapture.strings.nfcScreenScanInstructions = "Place the back of your phone over the ID or passport. Slowly move your phone up and down along the page. Once the reading begins, do not move your phone until the process completes."
+IDCapture.strings.nfcScreenLoadingText = "Reading Data"
+IDCapture.strings.nfcScreenSuccessTitle = "ID Read Successfully"
+IDCapture.strings.nfcErrorScreenErrorText = "Unable to read the NFC chip. Please try again."
+IDCapture.strings.nfcErrorScreenRetryButtonText = "RETRY"
+IDCapture.strings.nfcErrorScreenSkipButtonText = "SKIP"
+IDCapture.colors.nfcErrorScreenBackgroundColor = .white
+IDCapture.colors.nfcErrorScreenErrorTextColor = .black
+IDCapture.colors.nfcErrorScreenImageTintColor = .black
+IDCapture.colors.nfcErrorScreenRetryButtonTextColor = .white
+IDCapture.colors.nfcErrorScreenRetryButtonBackgroundColor = .black
+IDCapture.colors.nfcErrorScreenSkipButtonTextColor = .black
+IDCapture.colors.nfcErrorScreenSkipButtonBackgroundColor = .white
+IDCapture.fonts.nfcErrorScreenErrorTextFont = UIFont.boldSystemFont(ofSize: 20)
+IDCapture.fonts.nfcErrorScreenRetryButtonTextFont = UIFont.systemFont(ofSize: 14)
+IDCapture.fonts.nfcErrorScreenSkipButtonTextFont = UIFont.systemFont(ofSize: 14)
+IDCapture.images.nfcErrorScreenImage = UIImage(named: "NfcErrorImage")
+IDCapture.style.nfcErrorScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+IDCapture.style.nfcErrorScreenSkipButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+
 ```
 
 -   Before starting a Selfie Capture flow, optionally adjust the following <a href="./Classes/SelfieCapture.html">SelfieCapture</a> static properties:
@@ -1285,7 +1473,7 @@ SelfieCapture.options.ovalScaleMultiplier = 0.7
 SelfieCapture.options.cameraPosition = .front
 SelfieCapture.options.showToggleCamera = false
 SelfieCapture.options.cameraScreenBackButtonIsHidden = false
-SelfieCapture.options.isSelfieCapturePreviewEnabled = true
+SelfieCapture.options.isSelfieCapturePreviewEnabled = false
 
 //SelfieCapture Camera Screen UI Customization
 SelfieCapture.strings.captureSelfie = "Capture Selfie"
@@ -1300,10 +1488,11 @@ SelfieCapture.strings.rightEyeClosed = "right eye are closed"
 SelfieCapture.strings.faceMaskDetected = "Face mask detected"
 SelfieCapture.strings.sunglassesDetected = "Sunglasses Detected"
 SelfieCapture.strings.removeHat = "Hat Detected"
+SelfieCapture.strings.removeHand = "Remove hand"
+SelfieCapture.strings.removeScarf = "Remove Scarf"
 SelfieCapture.strings.fakeFace = "Fake face Detected"
 SelfieCapture.strings.realFace = "Real face Detected"
 SelfieCapture.strings.straightenHead = "Make Sure your head is straight"
-SelfieCapture.strings.moveFaceDown = "Move face Down"
 SelfieCapture.strings.moveFaceUp = "Move face Up"
 SelfieCapture.strings.moveFaceDown = "Move face Down"
 SelfieCapture.strings.capturingFace = "Capturing Face"
@@ -1400,15 +1589,17 @@ DocumentCapture.options.cameraScreenBackButtonIsHidden = false
 DocumentCapture.options.showPreviewScreen = true
 
 //DocumentCapture Camera Screen UI Customization
-DocumentCapture.string.uploadImage = "Upload image"
-DocumentCapture.string.uploadPDF = "Upload PDF"
-DocumentCapture.string.documentPreview = "Document Preview"
+DocumentCapture.strings.uploadImage = "Upload image"
+DocumentCapture.strings.uploadPDF = "Upload PDF"
+DocumentCapture.strings.documentPreview = "Document Preview"
 DocumentCapture.strings.closeButtonText = "Cancel"
+DocumentCapture.strings.continueButtonText = "Done"
 DocumentCapture.strings.captureDocument = "Capture Document"
 DocumentCapture.strings.moveAway = "Move ID Away"
 DocumentCapture.strings.moveCloser = "Move ID Closer"
 DocumentCapture.strings.alignRectangle = "Align ID inside Rectangle"
 DocumentCapture.colors.overlayTopViewColor = .white
+DocumentCapture.colors.backgroundColor = .clear
 DocumentCapture.colors.closeButtonTextColor = .black
 DocumentCapture.colors.closeButtonColor = .white
 DocumentCapture.colors.closeButtonImageTintColor = .white
@@ -1416,7 +1607,6 @@ DocumentCapture.colors.successLabelBackgroundColor = .green
 DocumentCapture.colors.errorLabelBackgroundColor = .red
 DocumentCapture.colors.successLabelTextColor = .white
 DocumentCapture.colors.errorLabelTextColor = .white
-DocumentCapture.colors.successLabelTextColor = .white
 DocumentCapture.colors.captureLabelColor = .white
 DocumentCapture.colors.captureLabelTextColor = .clear
 DocumentCapture.fonts.closeButtonTextFont = UIFont.systemFont(ofSize: 20)
@@ -1612,18 +1802,42 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 
 ## SDK Version History
 
-### **v 11.1.7.2.7 (28 April 2026)**
+### **v11.1.19.2.5 (22nd October 2026)**
+- **Dynamic ID Capture & Barcode Handling:** Enabled flexible two-sided ID capture that automatically detects the front and back of an ID in any order, while seamlessly processing barcode data on either side.
+- **Dynamic ID Orientation & Auto-Correction:** Introduced a .dynamic capture mode that automatically adapts capture guidelines for horizontal or vertical IDs in real time and automatically rotates the final captured image to an upright orientation.
+- **NFC Support:** Added optional NFC chip reading capabilities for supported IDs and passports through the dedicated IDentityMediumNFC framework, allowing integrators to include or exclude NFC functionality based on application requirements.
+- **NFC Data Extraction & Modular Framework:** Added support for extracting NFC chip data and artifacts, including face images and digital signatures, through the modular NFC framework.
+- **Server Payload & Swagger v4 Support:** Updated API data models to Swagger v4 specifications to support transmitting extracted NFC chip artifacts, including face images and digital signatures, directly to the backend server.
+- **iOS Medium SDK Size Reduction:** Reduced SDK size by replacing the third-party MLKit text recognition dependency with lightweight OCR models, which can be embedded in the app or downloaded from the server.
+- **Swift Package Manager (SPM) Support (iOS):** Added SPM integration support for the Medium SDK. Lite and Liveness already support SPM.
+
+### **v11.1.13.2.3 (23 July 2026)**
+- Added a maximum retry limit for ID and selfie capture.
+- Added a conditional ID success preview screen.
+- Added a conditional selfie success preview screen.
+- Added barcode cropping support.
+- Added a barcode recovery flow.
+- Added on-device AAMVA parsing.
+- Added support for mandatory geolocation enforcement.
+- Added support for vertical ID capture orientation.
+- Implemented image sequence animations for the Vertical ID capture instruction screen.
+- Implemented image sequence animations for the ID capture instruction screen.
+- Added model availability checks before launching Selfie Capture and ID Capture workflows. Users are now presented with clear error messages if the required models have not been downloaded.
+- Added support for Swift Package Manager (SPM), enabling seamless integration of LiteSDK and LivenessSDK.
+- Updated the SDK initialization endpoint.
+
+### **v11.1.7.2.7 (28 April 2026)**
 - Added customizable properties
 - Updated DocumentDetect model with ID back-side prediction
 - Reduced overall SDK package size
 - Introduced a timeout timer for capture to improve user flow and prevent indefinite waiting.
 - Added support for separate front and back ID capture flow for improved control and user experience.
 
-### **v 11.1.1.2.2 (15 January 2026)**
+### **v11.1.1.2.2 (15 January 2026)**
 - implemented server-side response for Autofill Service.
 - UI Enhancements.
 
-### **v 10.1.24.2.3 (04 December 2025)**
+### **v10.1.24.2.3 (04 December 2025)**
 - Added event logging capability within the SDK
 - Implemented improved handling for token expiration scenarios
 - Updated SDK to ensure compatibility with iOS 26 and Xcode 26
@@ -1631,24 +1845,24 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 - Integrated the Biometric signature library into the SDK.
 - Enabled more efficient multi-document workflows in custom product
 
-### **v 10.1.18.2.1 (11 November 2025)**
+### **v10.1.18.2.1 (11 November 2025)**
 - Updated the default maximum allowed fake face capture count from 15 to 10.
 
-### **v 10.1.16.2.2 (25 August 2025)**
+### **v10.1.16.2.2 (25 August 2025)**
 - Updated new encryption and decryption logic.
 - Ability to submit request on custom product.
 - Updated iOS SDK Minimum Deployment Target to iOS 15.6.
 
-### **v 10.1.4.2.4 (26 February 2025)**
+### **v10.1.4.2.4 (26 February 2025)**
 - Reduced the overall size of SDK.
 - Added configuration options to change the sequence of ID and Selfie capture.
 - Added support for the face mask detection model in the Medium version of the Android SDK.
 - Updated all default AI models to the latest versions.
 
-### **v 9.6.24.2.5 (05 December 2024)**
+### **v9.6.24.2.5 (05 December 2024)**
 - Improved capture quality with model updates that notify users of obstructions over key ID information.
 
-### **v 9.6.22.2.9 (18 November 2024)**
+### **v9.6.22.2.9 (18 November 2024)**
 - Integrated the latest swagger V4 API version. This includes updates to model download based on V4, updates to the new initialization process, as well as ensuring backward compatibility.
 - Added the selfie image in the response.
 - Added support for an initialization parameter that will enable / disable Location / GPS capture.
@@ -1660,49 +1874,49 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 - Bug fixes and performance improvements.
 - Updated all default AI models to the latest versions.
 
-### **v 9.6.4.2.2 (31 May 2024)**
+### **v9.6.4.2.2 (31 May 2024)**
 - Improved user experience for IDCapture. When rectangle turn green, showing message 'document detected, hold still...'
 
-### **v 9.6.4.2.1 (26 February 2024)**
+### **v9.6.4.2.1 (26 February 2024)**
 - Added Apple Privacy Policy - Spring 2024 Mandate
 - Updated Doc-Detect model to determine if ID or Passport capture
 - Updated all default AI models to the latest versions.
 
-### **v 9.6.3.2.2 (29 January 2024)**
+### **v9.6.3.2.2 (29 January 2024)**
 - Updated SDK support for additional flags (sendProcessedImagesInResponse and sendInputImagesInResponse)
 - Added ID extracted profession and profession non English data in response
 - Updated all default AI models to the latest versions.
 
-### **v 9.5.15.2.5 (06 November 2023)**
+### **v9.5.15.2.5 (06 November 2023)**
 - Added face Focus Model
 - Updated Embedded model with Production tags models
 - Improved Fingerprint Capture feature for triple camera
 - Added Voice Capture feature 
 
-### **v 9.5.9.2.4 (08 August 2023)**
+### **v9.5.9.2.4 (08 August 2023)**
 - Bug Fixes for Passport NFC detection
 - Bug fixes and performance improvements.
 
-### **v 9.5.7.2.5(07 July 2023)**
+### **v9.5.7.2.5(07 July 2023)**
 - Added Passport NFC feature
 - Minor bug fixes
 
-### **v 9.5.3.2.3 (15 May 2023)**
+### **v9.5.3.2.3 (15 May 2023)**
 - Enhanced capture of passports.
 - Improved Video ID processing procedures
 - Reduced default selfie silhouette size during liveness detection
 
-### **v 9.5.2.2.3 (25 April 2023)**
+### **v9.5.2.2.3 (25 April 2023)**
 - Downloading all models from server
 - Updated focus model to be downloaded from server and updated default focus threshold.
 - Enhancements added to improve handling of Video ID
 
-### **v 9.4.8.2.1 (10 March 2023)**
+### **v9.4.8.2.1 (10 March 2023)**
 - Added VideoIDCapture support
 - Added SignatureCapture support
 - Added FingerPrintCapture support
 
-### **v 9.3.10.2.26**
+### **v9.3.10.2.26**
 - Added spanish language support
 - Now fitting instead of filling the camera preview to better support the 600px height requirement.
 - Implemented new AES/GCM/NoPadding algorithm.
@@ -1711,23 +1925,23 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 - Alerting the user when multiple faces are detected during selfie capture.
 - Updated instruction screen for IDCapture & SelfieCapture
 
-### **v 9.3.4.2.8**
+### **v9.3.4.2.8**
 - Added a minimum focus threshold so that if a classified ID is not above the required focus threshold it will show “Not In Focus” to the user for 15 seconds before attempting to fallback to the minimum focus threshold.
 
-### **v 9.3.4.2.6**
+### **v9.3.4.2.6**
 - Added functionality to download updated encrypted Focus Model from server.
 
-### **v 9.3.4.2.5**
+### **v9.3.4.2.5**
 - Added embeded Focus Model
 
-### **v 9.3.3.32**
+### **v9.3.3.32**
 - Added IDentitySDK.pluginName property to add it in Metadata.
   
-### **v 9.3.3.31**
+### **v9.3.3.31**
 - Added Document Detect confidence in Metadata
 - Added frontDocumentConfidence & backDocumentConfidence default values to 0.85
 
-### **v 9.3.2.31**
+### **v9.3.2.31**
 - Added Document Capture as a additional feature
 - Added properties to customize elements on SelfieCapture camera screen.
 - Added properties to customize elements on IDCapture camera screen.
@@ -1735,17 +1949,17 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 - Added properties to customize elements on IDCapture instruction screen.
 - Added properties to customize elements on DocumentCapture instruction screen.
 
-### **v 9.3.1.50**
+### **v9.3.1.50**
 - Added properties to customize Images on SelfieCapture camera screen & Retry screen.
 - Added properties to customize Images on IdCapture camera screen & Retry screen.
 
-### **v 9.3.1.49**
+### **v9.3.1.49**
 - Autofill.
 - Added SDK UI Customization.
 - Instruction screens for selfie and ID capture.
 - Replcae `.framework` file with `.xcframework` file which has frameworks for device as well as for simulator.
 
-### **v 9.1.7.31**
+### **v9.1.7.31**
 - Live face Check
 - ID Validation
 - ID Validation and face match

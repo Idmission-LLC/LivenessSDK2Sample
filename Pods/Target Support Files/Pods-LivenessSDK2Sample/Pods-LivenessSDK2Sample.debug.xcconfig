@@ -5,7 +5,7 @@ FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/IDentityLivenessModels" "${P
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
 LIBRARY_SEARCH_PATHS = $(inherited) "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
-OTHER_LDFLAGS = $(inherited) -framework "IDentityLivenessSDK" -framework "SelfieCaptureLiveness"
+OTHER_LDFLAGS = $(inherited) -framework "IDentityLivenessModels" -framework "IDentityLivenessSDK" -framework "SelfieCaptureLiveness"
 OTHER_MODULE_VERIFIER_FLAGS = $(inherited) "-F${PODS_CONFIGURATION_BUILD_DIR}/IDentityLivenessModels" "-F${PODS_CONFIGURATION_BUILD_DIR}/IDentityLivenessSDK2.0"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}

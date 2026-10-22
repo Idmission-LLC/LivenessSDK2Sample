@@ -22,7 +22,7 @@
 		0CA76AF4281C6A6A00B23630 /* HostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76AF2281C6A6A00B23630 /* HostDataModel.swift */; };
 		0CA76AF5281C6A6A00B23630 /* ModelForResultScreenServiceId20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76AF3281C6A6A00B23630 /* ModelForResultScreenServiceId20.swift */; };
 		0CD72DC12D6DFEFF00787056 /* ViewController+SDKInitialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD72DC02D6DFEFD00787056 /* ViewController+SDKInitialization.swift */; };
-		55F5EA45C73A4CD4B5ADB749 /* Pods_LivenessSDK2Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458F468B6E05A7C023CF399C /* Pods_LivenessSDK2Sample.framework */; };
+		F67328DBB37A28A793BA0C4E /* Pods_LivenessSDK2Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE455F318C3714B06DEBE259 /* Pods_LivenessSDK2Sample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,9 +56,9 @@
 		0CA76AF2281C6A6A00B23630 /* HostDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDataModel.swift; sourceTree = "<group>"; };
 		0CA76AF3281C6A6A00B23630 /* ModelForResultScreenServiceId20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelForResultScreenServiceId20.swift; sourceTree = "<group>"; };
 		0CD72DC02D6DFEFD00787056 /* ViewController+SDKInitialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SDKInitialization.swift"; sourceTree = "<group>"; };
-		24F1347471394E6F775BDE1B /* Pods-LivenessSDK2Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessSDK2Sample.debug.xcconfig"; path = "Target Support Files/Pods-LivenessSDK2Sample/Pods-LivenessSDK2Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		458F468B6E05A7C023CF399C /* Pods_LivenessSDK2Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessSDK2Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF24866CFE6E92FDA8FE6BAD /* Pods-LivenessSDK2Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessSDK2Sample.release.xcconfig"; path = "Target Support Files/Pods-LivenessSDK2Sample/Pods-LivenessSDK2Sample.release.xcconfig"; sourceTree = "<group>"; };
+		CB991DF0E944D0EE0F0A8EE1 /* Pods-LivenessSDK2Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessSDK2Sample.debug.xcconfig"; path = "Target Support Files/Pods-LivenessSDK2Sample/Pods-LivenessSDK2Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		D112F75CC4066ED3B9A95AF0 /* Pods-LivenessSDK2Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessSDK2Sample.release.xcconfig"; path = "Target Support Files/Pods-LivenessSDK2Sample/Pods-LivenessSDK2Sample.release.xcconfig"; sourceTree = "<group>"; };
+		FE455F318C3714B06DEBE259 /* Pods_LivenessSDK2Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessSDK2Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55F5EA45C73A4CD4B5ADB749 /* Pods_LivenessSDK2Sample.framework in Frameworks */,
+				F67328DBB37A28A793BA0C4E /* Pods_LivenessSDK2Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +76,8 @@
 		0A890F12755109B44274B3CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				24F1347471394E6F775BDE1B /* Pods-LivenessSDK2Sample.debug.xcconfig */,
-				AF24866CFE6E92FDA8FE6BAD /* Pods-LivenessSDK2Sample.release.xcconfig */,
+				CB991DF0E944D0EE0F0A8EE1 /* Pods-LivenessSDK2Sample.debug.xcconfig */,
+				D112F75CC4066ED3B9A95AF0 /* Pods-LivenessSDK2Sample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 				0CA76AC1281C236800B23630 /* LivenessSDK2Sample */,
 				0CA76AC0281C236800B23630 /* Products */,
 				0A890F12755109B44274B3CF /* Pods */,
-				4F023B450A3026B6997EBF5C /* Frameworks */,
+				841248D4AC1B314E74F851D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,10 +131,10 @@
 			path = "Helper Files";
 			sourceTree = "<group>";
 		};
-		4F023B450A3026B6997EBF5C /* Frameworks */ = {
+		841248D4AC1B314E74F851D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				458F468B6E05A7C023CF399C /* Pods_LivenessSDK2Sample.framework */,
+				FE455F318C3714B06DEBE259 /* Pods_LivenessSDK2Sample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,12 +146,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA76AD3281C236B00B23630 /* Build configuration list for PBXNativeTarget "LivenessSDK2Sample" */;
 			buildPhases = (
-				089A46889433295263578635 /* [CP] Check Pods Manifest.lock */,
+				4EF433198F3E4717CA74E9B0 /* [CP] Check Pods Manifest.lock */,
 				0CA76ABB281C236800B23630 /* Sources */,
 				0CA76ABC281C236800B23630 /* Frameworks */,
 				0CA76ABD281C236800B23630 /* Resources */,
 				0CA76ADE281C2A0E00B23630 /* Embed Frameworks */,
-				796A7ABCCEA3A6E371E5F550 /* [CP] Embed Pods Frameworks */,
+				ADF9E9DCAF71D41699C12B99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,7 +210,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		089A46889433295263578635 /* [CP] Check Pods Manifest.lock */ = {
+		4EF433198F3E4717CA74E9B0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,7 +232,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		796A7ABCCEA3A6E371E5F550 /* [CP] Embed Pods Frameworks */ = {
+		ADF9E9DCAF71D41699C12B99 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,12 +412,12 @@
 		};
 		0CA76AD4281C236B00B23630 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24F1347471394E6F775BDE1B /* Pods-LivenessSDK2Sample.debug.xcconfig */;
+			baseConfigurationReference = CB991DF0E944D0EE0F0A8EE1 /* Pods-LivenessSDK2Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = SXB7K82DRL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -439,7 +439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.1.3;
+				MARKETING_VERSION = 11.1.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.idms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -450,12 +450,12 @@
 		};
 		0CA76AD5281C236B00B23630 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF24866CFE6E92FDA8FE6BAD /* Pods-LivenessSDK2Sample.release.xcconfig */;
+			baseConfigurationReference = D112F75CC4066ED3B9A95AF0 /* Pods-LivenessSDK2Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = SXB7K82DRL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.1.3;
+				MARKETING_VERSION = 11.1.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.idms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

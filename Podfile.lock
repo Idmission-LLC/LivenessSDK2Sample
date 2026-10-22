@@ -1,10 +1,10 @@
 PODS:
-  - IDentityLivenessModels (11.1.13.2.3)
-  - IDentityLivenessSDK2.0 (11.1.13.2.3)
+  - IDentityLivenessModels (11.1.19.2.5)
+  - IDentityLivenessSDK2.0 (11.1.19.2.5)
 
 DEPENDENCIES:
-  - IDentityLivenessModels (= 11.1.13.2.3)
-  - IDentityLivenessSDK2.0 (= 11.1.13.2.3)
+  - IDentityLivenessModels (= 11.1.19.2.5)
+  - IDentityLivenessSDK2.0 (= 11.1.19.2.5)
 
 SPEC REPOS:
   trunk:
@@ -12,9 +12,9 @@ SPEC REPOS:
     - IDentityLivenessSDK2.0
 
 SPEC CHECKSUMS:
-  IDentityLivenessModels: 6df06e3906ae4bf69d43ed2e7882c30374b262f6
-  IDentityLivenessSDK2.0: adb652bb61f0f1944b22ead5316144ada107d6ac
+  IDentityLivenessModels: c154b1dd6d8dfd9949ba500666b112da1f6ec468
+  IDentityLivenessSDK2.0: d3404727b95c20c1020d66bf58b2c637d61df752
 
-PODFILE CHECKSUM: 7baada914923bb7406db06e95236007ee94684b1
+PODFILE CHECKSUM: acbdf6f6ca679a6fac1b57113d1b937ee949bd67
 
 COCOAPODS: 1.16.2
